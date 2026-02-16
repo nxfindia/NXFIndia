@@ -82,7 +82,7 @@ const Home: React.FC = () => {
                <div className="h-64 overflow-hidden relative">
                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent z-10"></div>
                  <img 
-                   src="https://nxfindia.org/wp-content/uploads/2026/02/554779184_18044772803660685_3012708290004693332_n.webp.jpeg" 
+                   src="https://nxfindia.org/wp-content/uploads/2026/02/04-scaled.jpg" 
                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                    alt="Atom Film Festival"
                  />
