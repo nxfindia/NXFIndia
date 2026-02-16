@@ -6,9 +6,10 @@
 -- 1. Create 'inquiries' table
 -- We drop the table if it exists to ensure the schema matches exactly.
 -- CAUTION: This deletes existing data. If you need to preserve data, use ALTER TABLE commands instead.
-DROP TABLE IF EXISTS public.inquiries;
+-- DROP TABLE IF EXISTS public.inquiries; 
+-- (Commented out DROP to prevent accidental data loss if you run this multiple times. Uncomment if you want a fresh start.)
 
-CREATE TABLE public.inquiries (
+CREATE TABLE IF NOT EXISTS public.inquiries (
   id uuid NOT NULL DEFAULT gen_random_uuid(),
   created_at timestamp with time zone NOT NULL DEFAULT now(),
   
@@ -37,13 +38,17 @@ CREATE TABLE public.inquiries (
 ALTER TABLE public.inquiries ENABLE ROW LEVEL SECURITY;
 
 -- 3. Create RLS Policies
+-- First, drop existing policies to avoid conflicts
+DROP POLICY IF EXISTS "Allow public inserts" ON public.inquiries;
 
--- Policy: Allow public (anonymous) users to INSERT data.
+-- Policy: Allow ANYONE (public) to INSERT data.
+-- We use 'public' role to cover both anon and authenticated users just in case.
 CREATE POLICY "Allow public inserts" 
 ON public.inquiries 
 FOR INSERT 
-TO anon 
+TO public
 WITH CHECK (true);
 
--- Policy: Allow service_role to read data (implicit, but good for clarity if you expand policies)
--- Note: Anonymous users cannot read the data, protecting privacy.
+-- Note: We do NOT add a SELECT policy for public. 
+-- This ensures that submitted data cannot be read by anonymous users, preserving privacy.
+-- The application code should NOT use .select() after insert.

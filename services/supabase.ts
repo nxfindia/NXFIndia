@@ -7,7 +7,6 @@ declare var process: any;
 const supabaseUrl = process.env.SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co';
 
 // 2. Get Key: Try process.env, fallback to the provided key
-// We include the hardcoded key here to ensure the app works even if .env is not set up correctly.
 const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
 
 // Validate configuration
@@ -50,15 +49,20 @@ export const submitInquiry = async (data: {
 
   try {
     console.log("Submitting inquiry to:", supabaseUrl);
-    const response = await supabase.from('inquiries').insert([data]).select();
+    
+    // IMPORTANT: We use .insert() WITHOUT .select().
+    // Using .select() triggers a READ operation. Since our RLS policy typically 
+    // only allows anonymous users to INSERT (not SELECT), adding .select() 
+    // causes a "new row violates row-level security policy" error.
+    const response = await supabase.from('inquiries').insert([data]);
     
     if (response.error) {
       console.error("Supabase Request Error:", response.error);
       return { error: { message: response.error.message || "Database request failed." }, data: null };
     }
     
-    console.log("Supabase Success:", response.data);
-    return response;
+    console.log("Supabase Success (Status):", response.status);
+    return { data: true, error: null };
   } catch (err: any) {
     console.error("Unexpected Exception submitting to Supabase:", err);
     // Handle 'Load failed' specifically to give a better hint
