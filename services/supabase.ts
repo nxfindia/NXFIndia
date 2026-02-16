@@ -6,8 +6,9 @@ declare var process: any;
 // 1. Get URL: Try process.env first, fall back to the hardcoded URL provided previously
 const supabaseUrl = process.env.SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co';
 
-// 2. Get Key: Try standard Vite env var (exposed via vite.config.ts)
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
+// 2. Get Key: Try standard Vite env var, then fallback to the specific key provided by the user
+// Note: We include the hardcoded key here to ensure the app works even if .env is not set up or loaded correctly.
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
 
 // Validate configuration
 if (!supabaseKey) {
@@ -33,7 +34,7 @@ export const submitInquiry = async (data: {
   sponsor_type?: string | null;
   interest_area?: string | null;
 }) => {
-  console.log("Attempting to submit inquiry to Supabase...", { url: supabaseUrl, hasKey: !!supabaseKey, data });
+  console.log("Attempting to submit inquiry to Supabase...", { url: supabaseUrl, hasKey: !!supabaseKey });
   
   // Graceful handling if supabase is not initialized
   if (!supabase) {

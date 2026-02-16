@@ -11,9 +11,10 @@ export default defineConfig(({ mode }) => {
     define: {
       // Prevents "process is not defined" error in browser
       'process.env.API_KEY': JSON.stringify(env.API_KEY || ''),
-      'process.env.SUPABASE_URL': JSON.stringify(env.SUPABASE_URL || env.VITE_SUPABASE_URL || ''),
-      // Check multiple common names for the key
-      'process.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY || env.SUPABASE_KEY || ''),
+      // Inject the URL with a default
+      'process.env.SUPABASE_URL': JSON.stringify(env.SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co'),
+      // Inject the Key with the provided fallback
+      'process.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY || env.SUPABASE_KEY || 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s'),
     },
   };
 });
