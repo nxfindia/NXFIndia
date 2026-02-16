@@ -1,18 +1,16 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Declare process for TypeScript since we are not using @types/node
-declare var process: any;
-
-// The Supabase Key provided
+// NOTE: The key below looks like a publishable key from a different service or a custom format.
+// Standard Supabase Anon keys are JWTs and typically start with "eyJ...".
+// Please ensure you have copied the "anon" public key from your Supabase Project Settings > API.
 const supabaseKey = 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
 
-// Updated Supabase Project URL
-const supabaseUrl = process.env.SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co';
+// The Project URL provided
+const supabaseUrl = 'https://beqttwwmrrowqbhqoooj.supabase.co';
 
-// Initialize client only if keys are present
-export const supabase = (supabaseUrl && supabaseKey) 
-  ? createClient(supabaseUrl, supabaseKey)
-  : null;
+// Initialize client
+// We remove the conditional check so that if configuration is wrong, it fails visibly rather than simulating success.
+export const supabase = createClient(supabaseUrl, supabaseKey);
 
 /**
  * Submits an inquiry to the 'inquiries' table in Supabase.
@@ -40,14 +38,22 @@ export const submitInquiry = async (data: {
   sponsor_type?: string | null;
   interest_area?: string | null;
 }) => {
-  if (!supabase) {
-    console.warn("Supabase not fully configured. Check services/supabase.ts for URL and Key.");
-    console.log("Simulating submission with data:", data);
+  console.log("Attempting to submit inquiry to Supabase...", data);
+  
+  try {
+    // We chain .select() to ensure the inserted data is returned (confirming the operation)
+    // and to get more explicit errors if policies fail.
+    const response = await supabase.from('inquiries').insert([data]).select();
     
-    // Simulate network delay for UI feedback
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    return { error: null, data: { ...data, id: 'simulated-id' } };
+    if (response.error) {
+      console.error("Supabase Error:", response.error);
+    } else {
+      console.log("Supabase Success:", response.data);
+    }
+    
+    return response;
+  } catch (err) {
+    console.error("Unexpected Error submitting to Supabase:", err);
+    return { error: err, data: null };
   }
-
-  return await supabase.from('inquiries').insert([data]);
 };
