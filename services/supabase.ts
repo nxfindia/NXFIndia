@@ -1,32 +1,27 @@
-import { createClient } from '@supabase/supabase-js';
+import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
-// NOTE: The key below looks like a publishable key from a different service or a custom format.
-// Standard Supabase Anon keys are JWTs and typically start with "eyJ...".
-// Please ensure you have copied the "anon" public key from your Supabase Project Settings > API.
-const supabaseKey = 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
+// Declare process for TypeScript
+declare var process: any;
 
-// The Project URL provided
-const supabaseUrl = 'https://beqttwwmrrowqbhqoooj.supabase.co';
+// 1. Get URL: Try process.env first, fall back to the hardcoded URL provided previously
+const supabaseUrl = process.env.SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co';
 
-// Initialize client
-// We remove the conditional check so that if configuration is wrong, it fails visibly rather than simulating success.
-export const supabase = createClient(supabaseUrl, supabaseKey);
+// 2. Get Key: Try standard Vite env var (exposed via vite.config.ts)
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
+
+// Validate configuration
+if (!supabaseKey) {
+  console.error("Supabase Anon Key is missing! Please set VITE_SUPABASE_ANON_KEY in your .env file.");
+}
+
+// Initialize client ONLY if key is present to avoid "supabaseKey is required" error
+export const supabase: SupabaseClient | null = (supabaseUrl && supabaseKey) 
+  ? createClient(supabaseUrl, supabaseKey) 
+  : null;
 
 /**
  * Submits an inquiry to the 'inquiries' table in Supabase.
  * Used in: pages/Contact.tsx
- * 
- * Schema expected:
- * - id: uuid (auto)
- * - created_at: timestamp (auto)
- * - type: text (e.g., 'general', 'sponsor', 'host')
- * - name: text
- * - email: text
- * - organization: text (nullable)
- * - message: text
- * - location: text (nullable)
- * - sponsor_type: text (nullable)
- * - interest_area: text (nullable)
  */
 export const submitInquiry = async (data: {
   type: string;
@@ -38,11 +33,16 @@ export const submitInquiry = async (data: {
   sponsor_type?: string | null;
   interest_area?: string | null;
 }) => {
-  console.log("Attempting to submit inquiry to Supabase...", data);
+  console.log("Attempting to submit inquiry to Supabase...", { url: supabaseUrl, hasKey: !!supabaseKey, data });
   
+  // Graceful handling if supabase is not initialized
+  if (!supabase) {
+    const errorMsg = "Supabase client is not initialized. Missing VITE_SUPABASE_ANON_KEY.";
+    console.error(errorMsg);
+    return { error: { message: errorMsg }, data: null };
+  }
+
   try {
-    // We chain .select() to ensure the inserted data is returned (confirming the operation)
-    // and to get more explicit errors if policies fail.
     const response = await supabase.from('inquiries').insert([data]).select();
     
     if (response.error) {
