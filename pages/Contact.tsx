@@ -61,20 +61,20 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      // Prepare details object based on intent
-      let details = {};
-      if (intent === 'host') details = { location: formData.location };
-      if (intent === 'sponsor') details = { sponsorType: formData.sponsorType };
-      if (intent === 'general') details = { interestArea: formData.interestArea };
-
-      const { error } = await submitInquiry({
+      // Map form data to specific database columns based on intent
+      const payload = {
         type: intent || 'general',
         name: formData.name,
         email: formData.email,
-        organization: formData.organization,
+        organization: (intent !== 'general' && formData.organization) ? formData.organization : null,
         message: formData.message,
-        details: details
-      });
+        // Specific fields
+        location: intent === 'host' ? formData.location : null,
+        sponsor_type: intent === 'sponsor' ? formData.sponsorType : null,
+        interest_area: intent === 'general' ? formData.interestArea : null
+      };
+
+      const { error } = await submitInquiry(payload);
 
       if (error) throw error;
       

@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-md transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex justify-between items-center">
+      <div className="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex justify-between items-center">
         
         {/* Brand - Logo Only */}
         <Link to="/" className="flex items-center group relative">
@@ -82,6 +82,7 @@ const Navbar: React.FC = () => {
         <button 
           onClick={() => setIsOpen(!isOpen)}
           className="md:hidden text-slate-800 p-2 hover:bg-slate-100 rounded-lg transition-colors"
+          aria-label={isOpen ? "Close menu" : "Open menu"}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -89,7 +90,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-28 px-6 overflow-y-auto">
+        <div className="fixed inset-0 bg-white z-40 pt-28 px-6 overflow-y-auto animate-in fade-in slide-in-from-top-5 duration-200">
           <div className="space-y-4">
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-slate-100 pb-4">

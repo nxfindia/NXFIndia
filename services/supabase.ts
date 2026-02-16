@@ -27,15 +27,19 @@ export const supabase = (supabaseUrl && supabaseKey && supabaseUrl !== 'https://
  * - email: text
  * - organization: text (nullable)
  * - message: text
- * - details: jsonb (nullable, for extra fields like 'location', 'tier')
+ * - location: text (nullable)
+ * - sponsor_type: text (nullable)
+ * - interest_area: text (nullable)
  */
 export const submitInquiry = async (data: {
   type: string;
   name: string;
   email: string;
-  organization?: string;
+  organization?: string | null;
   message: string;
-  details?: any;
+  location?: string | null;
+  sponsor_type?: string | null;
+  interest_area?: string | null;
 }) => {
   if (!supabase) {
     console.warn("Supabase not fully configured. Check services/supabase.ts for URL and Key.");
