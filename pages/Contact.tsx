@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { 
   Heart, Handshake, Building2, ArrowRight, ArrowLeft, CheckCircle2, 
-  Loader2, Sparkles, MapPin, Mail 
+  Loader2, Sparkles, MapPin, Mail, AlertCircle 
 } from 'lucide-react';
 import { submitInquiry } from '../services/supabase';
 
@@ -25,6 +25,7 @@ const Contact: React.FC = () => {
   const [intent, setIntent] = useState<IntentType>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   
   const [formData, setFormData] = useState<FormData>({
     name: '',
@@ -54,11 +55,14 @@ const Contact: React.FC = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+    // Clear error when user types
+    if (errorMessage) setErrorMessage(null);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setErrorMessage(null);
 
     try {
       // Map form data to specific database columns based on intent
@@ -77,16 +81,14 @@ const Contact: React.FC = () => {
       const { error } = await submitInquiry(payload);
 
       if (error) {
-        // Cast error to any to access potential 'details' property from PostgrestError
-        throw new Error(error.message || (error as any).details || "Unknown error occurred.");
+        throw new Error(error.message || "Unknown error occurred.");
       }
       
       setIsSuccess(true);
       setStep(3);
     } catch (error: any) {
       console.error('Submission error:', error);
-      // Show the actual error message to help debugging
-      alert(`Submission Failed: ${error.message || "Please check your connection and try again."}`);
+      setErrorMessage(error.message || "Submission failed. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
@@ -96,6 +98,7 @@ const Contact: React.FC = () => {
     setStep(1);
     setIntent(null);
     setIsSuccess(false);
+    setErrorMessage(null);
     setFormData({
       name: '', email: '', organization: '', message: '', 
       location: '', sponsorType: 'financial', interestArea: 'volunteer'
@@ -200,6 +203,13 @@ const Contact: React.FC = () => {
             {intent === 'host' && "Bring the festival to your campus."}
           </h2>
         </div>
+
+        {errorMessage && (
+          <div className="mb-8 bg-red-50 text-red-600 p-4 rounded-xl flex items-start gap-3 border border-red-100 animate-in fade-in slide-in-from-top-2">
+            <AlertCircle className="flex-shrink-0 mt-0.5" size={20} />
+            <div className="text-sm font-medium">{errorMessage}</div>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-8">
           

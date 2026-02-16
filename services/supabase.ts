@@ -3,23 +3,28 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js';
 // Declare process for TypeScript
 declare var process: any;
 
-// 1. Get URL: Try process.env first, fall back to the hardcoded URL provided previously
+// 1. Get URL: Try process.env first, fall back to the hardcoded URL
 const supabaseUrl = process.env.SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co';
 
-// 2. Get Key: Try process.env. 
-// We do NOT hardcode a fallback key here to ensure we rely on the user's valid environment variable.
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
+// 2. Get Key: Try process.env, fallback to the provided key
+// We include the hardcoded key here to ensure the app works even if .env is not set up correctly.
+const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
 
 // Validate configuration
 if (!supabaseKey) {
   console.warn("Supabase Anon Key is missing! Please check VITE_SUPABASE_ANON_KEY in your .env file.");
-} else {
-  console.log("Supabase Client initialized. Key length:", supabaseKey.length);
 }
 
 // Initialize client ONLY if key is present
+// We disable auth persistence to prevent issues with localStorage/cookies in some environments
 export const supabase: SupabaseClient | null = (supabaseUrl && supabaseKey) 
-  ? createClient(supabaseUrl, supabaseKey) 
+  ? createClient(supabaseUrl, supabaseKey, {
+      auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+      }
+    }) 
   : null;
 
 /**
@@ -44,17 +49,22 @@ export const submitInquiry = async (data: {
   }
 
   try {
+    console.log("Submitting inquiry to:", supabaseUrl);
     const response = await supabase.from('inquiries').insert([data]).select();
     
     if (response.error) {
       console.error("Supabase Request Error:", response.error);
-    } else {
-      console.log("Supabase Success:", response.data);
+      return { error: { message: response.error.message || "Database request failed." }, data: null };
     }
     
+    console.log("Supabase Success:", response.data);
     return response;
   } catch (err: any) {
     console.error("Unexpected Exception submitting to Supabase:", err);
+    // Handle 'Load failed' specifically to give a better hint
+    if (err.message === 'TypeError: Load failed' || err.message === 'Load failed') {
+      return { error: { message: "Network Error: Request blocked. Please check your connection or Ad Blocker." }, data: null };
+    }
     return { error: { message: err.message || "An unexpected network error occurred." }, data: null };
   }
 };
