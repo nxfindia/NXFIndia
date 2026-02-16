@@ -27,25 +27,36 @@ export const getChatSession = (): ChatSession => {
   }
 
   if (!chatSession) {
-    // Use gemini-1.5-flash as it is reliable with this SDK version
+    // Using gemini-1.5-flash
+    // Note: systemInstruction is passed via history to support older SDK versions defined in package.json
     const model = client.getGenerativeModel({ 
       model: "gemini-1.5-flash",
-      systemInstruction: `You are the intelligent assistant for NXF India (NilgirisNext Foundation). 
-        
-        Your Goal: Help users navigate the website, understand our festivals (ATOM, OSFF), and answer questions about our mission.
-        
-        Rules:
-        1. Use the KNOWLEDGE BASE below to answer questions. 
-        2. If the answer is not in the knowledge base, politely say you don't have that information and suggest they contact us at contact@nxfindia.org.
-        3. Be polite, professional, and concise.
-        4. When talking about festivals, encourage them to participate or submit films.
-        
-        *** KNOWLEDGE BASE ***
-        ${KNOWLEDGE_BASE}`
     });
 
+    const systemPrompt = `You are the intelligent assistant for NXF India (NilgirisNext Foundation). 
+        
+    Your Goal: Help users navigate the website, understand our festivals (ATOM, OSFF), and answer questions about our mission.
+    
+    Rules:
+    1. Use the KNOWLEDGE BASE below to answer questions. 
+    2. If the answer is not in the knowledge base, politely say you don't have that information and suggest they contact us at contact@nxfindia.org.
+    3. Be polite, professional, and concise.
+    4. When talking about festivals, encourage them to participate or submit films.
+    
+    *** KNOWLEDGE BASE ***
+    ${KNOWLEDGE_BASE}`;
+
     chatSession = model.startChat({
-      history: [],
+      history: [
+        {
+          role: "user",
+          parts: [{ text: systemPrompt }]
+        },
+        {
+          role: "model",
+          parts: [{ text: "Understood. I am ready to assist users with information about NXF India, the ATOM Film Festival, and the Ooty Short Film Festival based on the provided knowledge base." }]
+        }
+      ],
       generationConfig: {
         maxOutputTokens: 1000,
       },
