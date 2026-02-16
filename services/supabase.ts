@@ -6,12 +6,11 @@ declare var process: any;
 // The Supabase Key provided
 const supabaseKey = 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
 
-// IMPORTANT: You must replace this with your actual Supabase Project URL.
-// It looks like: https://your-project-id.supabase.co
-const supabaseUrl = process.env.SUPABASE_URL || 'https://YOUR_PROJECT_ID.supabase.co';
+// Updated Supabase Project URL
+const supabaseUrl = process.env.SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co';
 
 // Initialize client only if keys are present
-export const supabase = (supabaseUrl && supabaseKey && supabaseUrl !== 'https://YOUR_PROJECT_ID.supabase.co') 
+export const supabase = (supabaseUrl && supabaseKey) 
   ? createClient(supabaseUrl, supabaseKey)
   : null;
 
