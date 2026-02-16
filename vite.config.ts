@@ -13,8 +13,9 @@ export default defineConfig(({ mode }) => {
       'process.env.API_KEY': JSON.stringify(env.API_KEY || ''),
       // Inject the URL with a default
       'process.env.SUPABASE_URL': JSON.stringify(env.SUPABASE_URL || env.VITE_SUPABASE_URL || 'https://beqttwwmrrowqbhqoooj.supabase.co'),
-      // Inject the Key with the provided fallback
-      'process.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY || env.SUPABASE_KEY || 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s'),
+      // Inject the Key with a simple fallback to empty string if not found.
+      // We rely on the user having set VITE_SUPABASE_ANON_KEY correctly in their .env
+      'process.env.VITE_SUPABASE_ANON_KEY': JSON.stringify(env.VITE_SUPABASE_ANON_KEY || env.SUPABASE_ANON_KEY || ''),
     },
   };
 });

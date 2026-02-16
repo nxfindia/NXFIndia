@@ -76,13 +76,17 @@ const Contact: React.FC = () => {
 
       const { error } = await submitInquiry(payload);
 
-      if (error) throw error;
+      if (error) {
+        // Cast error to any to access potential 'details' property from PostgrestError
+        throw new Error(error.message || (error as any).details || "Unknown error occurred.");
+      }
       
       setIsSuccess(true);
       setStep(3);
-    } catch (error) {
+    } catch (error: any) {
       console.error('Submission error:', error);
-      alert('Something went wrong. Please try again later.');
+      // Show the actual error message to help debugging
+      alert(`Submission Failed: ${error.message || "Please check your connection and try again."}`);
     } finally {
       setIsSubmitting(false);
     }
