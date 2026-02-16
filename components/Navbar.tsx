@@ -90,7 +90,7 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-32 px-6 overflow-y-auto animate-fade-in-up">
+        <div className="fixed inset-0 bg-white z-40 pt-32 px-6 overflow-y-auto h-screen w-screen">
           <div className="flex flex-col gap-6 pb-20">
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-slate-100 pb-4">
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
                           key={child.path}
                           to={child.path}
                           onClick={() => setIsOpen(false)}
-                          className="text-lg font-medium text-slate-500 hover:text-brand-purple transition-colors"
+                          className="text-lg font-medium text-slate-500 hover:text-brand-purple transition-colors block"
                         >
                           {child.label}
                         </Link>

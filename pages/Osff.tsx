@@ -72,13 +72,10 @@ const Osff: React.FC = () => {
                    <p className="text-slate-600 text-lg mb-8 leading-relaxed">
                      Imagine watching cinema under the open sky, surrounded by the rolling hills of Ooty. 9th Mile is not just a location; it's a character in our festival.
                    </p>
-                   <a href="https://maps.app.goo.gl/h47npk8nwWa85unKA" target="_blank" className="text-brand-red hover:text-brand-dark transition-colors font-bold flex items-center gap-2">
-                     <MapPin size={20}/> Get Directions
-                   </a>
                 </div>
                 <div className="rounded-2xl overflow-hidden h-80 relative shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-500">
                    <img 
-                     src="https://images.unsplash.com/photo-1626127038165-8012643a531e?q=80" 
+                     src="https://nxfindia.org/wp-content/uploads/2026/02/DSC_8087-scaled.jpg" 
                      className="w-full h-full object-cover"
                      alt="9th Mile"
                    />

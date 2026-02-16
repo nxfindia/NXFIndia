@@ -57,7 +57,10 @@ const AtomFestival: React.FC = () => {
     "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9157.jpg",
     "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9149.jpg",
     "https://nxfindia.org/wp-content/uploads/2026/02/ATOM-Rathinam-5-scaled.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/274A4704-scaled.jpg"
+    "https://nxfindia.org/wp-content/uploads/2026/02/274A4704-scaled.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/01.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/02-scaled.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/03jpg.jpg"
   ];
 
   return (
