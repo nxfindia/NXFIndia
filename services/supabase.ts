@@ -1,18 +1,21 @@
 import { createClient } from '@supabase/supabase-js';
 
-// Access environment variables securely
-// Note: In a real Vite/Next.js app, these would be import.meta.env.VITE_... or process.env.NEXT_PUBLIC_...
-// Depending on the build system, process.env might need specific configuration.
-const supabaseUrl = process.env.SUPABASE_URL || '';
-const supabaseKey = process.env.SUPABASE_KEY || '';
+// The Supabase Key provided
+const supabaseKey = 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
+
+// IMPORTANT: You must replace this with your actual Supabase Project URL.
+// It looks like: https://your-project-id.supabase.co
+const supabaseUrl = process.env.SUPABASE_URL || 'https://YOUR_PROJECT_ID.supabase.co';
 
 // Initialize client only if keys are present
-export const supabase = (supabaseUrl && supabaseKey) 
+export const supabase = (supabaseUrl && supabaseKey && supabaseUrl !== 'https://YOUR_PROJECT_ID.supabase.co') 
   ? createClient(supabaseUrl, supabaseKey)
   : null;
 
 /**
  * Submits an inquiry to the 'inquiries' table in Supabase.
+ * Used in: pages/Contact.tsx
+ * 
  * Schema expected:
  * - id: uuid (auto)
  * - created_at: timestamp (auto)
@@ -32,8 +35,10 @@ export const submitInquiry = async (data: {
   details?: any;
 }) => {
   if (!supabase) {
-    console.warn("Supabase credentials missing. Simulating success:", data);
-    // Simulate network delay
+    console.warn("Supabase not fully configured. Check services/supabase.ts for URL and Key.");
+    console.log("Simulating submission with data:", data);
+    
+    // Simulate network delay for UI feedback
     await new Promise(resolve => setTimeout(resolve, 1000));
     return { error: null, data: { ...data, id: 'simulated-id' } };
   }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Star, Heart, X, Film } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import PartnerMarquee from '../components/PartnerMarquee';
 
 const Home: React.FC = () => {
   const [showSubmissionModal, setShowSubmissionModal] = useState(false);
@@ -12,6 +13,18 @@ const Home: React.FC = () => {
     }, 2000);
     return () => clearTimeout(timer);
   }, []);
+
+  const partners = [
+    { name: "KV", src: "https://nxfindia.org/wp-content/uploads/2026/02/KV-logo-new.jpg" },
+    { name: "Green Hub", src: "https://nxfindia.org/wp-content/uploads/2026/02/Green-Hub.png" },
+    { name: "Dusty Foot", src: "https://nxfindia.org/wp-content/uploads/2026/02/Dusty-Foot-Foundation.png" },
+    { name: "BNHS", src: "https://nxfindia.org/wp-content/uploads/2026/02/BNHS-GREEN-LOGO-1.png" },
+    { name: "PSBT", src: "https://nxfindia.org/wp-content/uploads/2026/02/PSBT-Black-Thick.png" },
+    { name: "Toxics Link", src: "https://nxfindia.org/wp-content/uploads/2026/02/Toxics-logo_20250628_123456_0000-scaled.png" },
+    { name: "WCC", src: "https://nxfindia.org/wp-content/uploads/2026/02/WCCLogo.png" },
+    { name: "Partner", src: "https://nxfindia.org/wp-content/uploads/2026/02/Logo-scaled.png" },
+    { name: "TIPS/RGI", src: "https://nxfindia.org/wp-content/uploads/2026/02/TIPS-LOGO-RGI-LOGO-2.png" },
+  ];
 
   return (
     <div className="min-h-screen bg-paper pt-28 overflow-x-hidden">
@@ -47,30 +60,10 @@ const Home: React.FC = () => {
          </div>
       </section>
 
-      {/* LOGO SHOWCASE: Partners */}
-      <section className="py-16 bg-white border-y border-slate-100">
-        <div className="max-w-7xl mx-auto px-6">
-          <p className="text-center text-sm font-bold uppercase tracking-widest text-slate-400 mb-10">Our Partners</p>
-          <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-90">
-             
-             {/* RCAS */}
-             <div className="group text-center">
-               <img 
-                 src="https://nxfindia.org/wp-content/uploads/2025/06/logo-rcas.jpg" 
-                 alt="RCAS" 
-                 className="h-20 md:h-24 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" 
-               />
-             </div>
-
-             {/* Toxics Link */}
-             <div className="group text-center">
-               <img 
-                 src="https://nxfindia.org/wp-content/uploads/2025/06/Toxics-Link-25-years-011.jpg" 
-                 alt="Toxics Link" 
-                 className="h-16 md:h-20 w-auto object-contain grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-105" 
-               />
-             </div>
-          </div>
+      {/* LOGO SHOWCASE: Partners Marquee */}
+      <section className="py-20 bg-white border-y border-slate-100 overflow-hidden">
+        <div className="w-full">
+          <PartnerMarquee title="Our Esteemed Partners" partners={partners} />
         </div>
       </section>
 

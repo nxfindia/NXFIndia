@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, Link } from 'react-router-dom';
-import { Leaf, Users, Globe, BookOpen, Target, Film, Handshake, ArrowRight, Building, X, Info } from 'lucide-react';
+import { Leaf, Users, Globe, BookOpen, Target, Film, Handshake, ArrowRight, Building, X, Info, Image as ImageIcon } from 'lucide-react';
+import PartnerMarquee from '../components/PartnerMarquee';
 
 const AtomFestival: React.FC = () => {
   const location = useLocation();
@@ -31,6 +32,33 @@ const AtomFestival: React.FC = () => {
       document.body.style.overflow = 'unset';
     };
   }, [showVisionModal]);
+
+  const ngoPartners = [
+    { name: "KV", src: "https://nxfindia.org/wp-content/uploads/2026/02/KV-logo-new.jpg" },
+    { name: "Green Hub", src: "https://nxfindia.org/wp-content/uploads/2026/02/Green-Hub.png" },
+    { name: "Dusty Foot Foundation", src: "https://nxfindia.org/wp-content/uploads/2026/02/Dusty-Foot-Foundation.png" },
+    { name: "BNHS", src: "https://nxfindia.org/wp-content/uploads/2026/02/BNHS-GREEN-LOGO-1.png" },
+    { name: "PSBT", src: "https://nxfindia.org/wp-content/uploads/2026/02/PSBT-Black-Thick.png" },
+    { name: "Toxics Link", src: "https://nxfindia.org/wp-content/uploads/2026/02/Toxics-logo_20250628_123456_0000-scaled.png" },
+  ];
+
+  const institutionalPartners = [
+    { name: "WCC", src: "https://nxfindia.org/wp-content/uploads/2026/02/WCCLogo.png" },
+    { name: "Academic Partner", src: "https://nxfindia.org/wp-content/uploads/2026/02/Logo-scaled.png" },
+    { name: "TIPS / RGI", src: "https://nxfindia.org/wp-content/uploads/2026/02/TIPS-LOGO-RGI-LOGO-2.png" },
+  ];
+
+  const galleryImages = [
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_6115.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_5448-1-scaled.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_5380-scaled.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9130.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9160.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9157.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9149.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/ATOM-Rathinam-5-scaled.jpg",
+    "https://nxfindia.org/wp-content/uploads/2026/02/274A4704-scaled.jpg"
+  ];
 
   return (
     <div className="bg-paper min-h-screen pt-28">
@@ -128,35 +156,67 @@ const AtomFestival: React.FC = () => {
         </div>
       </section>
 
-      {/* LEADERSHIP & PARTNERS */}
+      {/* LEADERSHIP */}
       <section className="py-24 px-6 bg-slate-50">
-         <div className="max-w-7xl mx-auto">
-            {/* Leadership & Knowledge Partner */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Arun Vaddi */}
-                <div className="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 relative overflow-hidden h-full">
-                   <div className="absolute top-0 right-0 p-8 opacity-10">
-                      <Target size={120} />
-                   </div>
-                   <h3 className="text-2xl font-serif font-bold mb-2">Visionary Leadership</h3>
-                   <p className="text-brand-purple font-bold mb-6">Chaired by Mr. Arun Vaddi</p>
-                   <p className="text-slate-600 leading-relaxed mb-6">
-                     An internationally acclaimed filmmaker recognized at Cannes and Tribeca, and a pioneering environmental leader. His unique expertise ensures a curatorial vision that challenges perspectives and champions the intersection of art and ecology.
-                   </p>
+         <div className="max-w-4xl mx-auto">
+            <div className="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 relative overflow-hidden text-center">
+                <div className="absolute top-0 right-0 p-8 opacity-10">
+                    <Target size={120} />
                 </div>
+                <h3 className="text-2xl font-serif font-bold mb-2">Visionary Leadership</h3>
+                <p className="text-brand-purple font-bold mb-6">Chaired by Mr. Arun Vaddi</p>
+                <p className="text-slate-600 leading-relaxed mb-6">
+                    An internationally acclaimed filmmaker recognized at Cannes and Tribeca, and a pioneering environmental leader. His unique expertise ensures a curatorial vision that challenges perspectives and champions the intersection of art and ecology.
+                </p>
+            </div>
+         </div>
+      </section>
 
-                {/* Knowledge Partnerships */}
-                <div className="bg-white p-10 rounded-3xl shadow-lg border border-slate-100 relative overflow-hidden h-full">
-                   <div className="absolute top-0 right-0 p-8 opacity-10">
-                      <BookOpen size={120} />
-                   </div>
-                   <h3 className="text-2xl font-serif font-bold mb-4">Knowledge Partnerships</h3>
-                   <p className="text-slate-600 leading-relaxed mb-6">
-                     NXFindia collaborates with respected national and international non-governmental organizations, educational institutions, research bodies, and government agencies to ensure that our programs are grounded in intellectual rigor and real-world relevance.
-                   </p>
-                </div>
+      {/* STRATEGIC PARTNERS (NEW SECTION) */}
+      <section className="py-24 px-6 bg-white border-y border-slate-100 overflow-hidden">
+         <div className="max-w-7xl mx-auto w-full">
+            <div className="text-center mb-16">
+               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Strategic Partners</h2>
+               <p className="text-lg text-slate-600">Collaborating with leading organizations to drive impact.</p>
             </div>
 
+            {/* NGO Partners Marquee */}
+            <div className="mb-16">
+               <PartnerMarquee title="Knowledge & NGO Partners" partners={ngoPartners} />
+            </div>
+
+            {/* Institutional Partners Marquee */}
+            <div>
+               <PartnerMarquee title="Institutional Partners" partners={institutionalPartners} />
+            </div>
+         </div>
+      </section>
+
+      {/* GALLERY SECTION (NEW) */}
+      <section className="py-24 px-6 bg-slate-50">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+               <div className="inline-flex items-center justify-center p-3 bg-brand-teal/10 text-brand-teal rounded-full mb-4">
+                  <ImageIcon size={24} />
+               </div>
+               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">ATOM on Campus</h2>
+               <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                 Glimpses from our festival editions hosted at various colleges and universities across India.
+               </p>
+            </div>
+
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+               {galleryImages.map((src, i) => (
+                  <div key={i} className="break-inside-avoid rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group relative">
+                     <img 
+                       src={src} 
+                       alt={`ATOM Festival Gallery ${i+1}`} 
+                       className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+               ))}
+            </div>
          </div>
       </section>
 
