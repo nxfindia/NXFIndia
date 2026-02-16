@@ -1,5 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
 
+// Declare process for TypeScript since we are not using @types/node
+declare var process: any;
+
 // The Supabase Key provided
 const supabaseKey = 'sb_publishable_AqTmInNQoIEGNjleHCbAEQ_fQZEFK3s';
 

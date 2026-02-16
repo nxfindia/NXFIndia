@@ -1,6 +1,9 @@
 import { GoogleGenAI, Chat } from "@google/genai";
 import { KNOWLEDGE_BASE } from "./knowledgeBase";
 
+// Declare process for TypeScript since we are not using @types/node
+declare var process: any;
+
 const apiKey = process.env.API_KEY || '';
 
 let ai: GoogleGenAI | null = null;
