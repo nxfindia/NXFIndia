@@ -34,7 +34,7 @@ const FilmFestivals: React.FC = () => {
                  </div>
                  
                  <img 
-                   src="https://nxfindia.org/wp-content/uploads/2025/06/Atom-Logo-1.jpg" 
+                   src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" 
                    alt="ATOM Logo" 
                    className="h-20 w-auto object-contain self-start mb-8 mix-blend-multiply"
                  />
@@ -95,7 +95,7 @@ const FilmFestivals: React.FC = () => {
                  
                  <div className="bg-white p-4 rounded-xl inline-block w-fit mb-8 shadow-lg">
                    <img 
-                     src="https://nxfindia.org/wp-content/uploads/2025/09/OSFF-@-2-scaled.jpg" 
+                     src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" 
                      alt="OSFF Logo" 
                      className="h-16 w-auto object-contain"
                    />

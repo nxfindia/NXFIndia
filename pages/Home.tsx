@@ -82,7 +82,7 @@ const Home: React.FC = () => {
                <div className="h-64 overflow-hidden relative">
                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent z-10"></div>
                  <img 
-                   src="https://nxfindia.org/wp-content/uploads/2026/02/04-scaled.jpg" 
+                   src="https://arknetimages.com/wp-content/uploads/2026/02/03jpg.jpg" 
                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                    alt="Atom Film Festival"
                  />
@@ -96,7 +96,7 @@ const Home: React.FC = () => {
                     A unique traveling festival exploring the intersection of science, reality, and cinema.
                   </p>
                   <div className="flex justify-between items-center">
-                    <img src="https://nxfindia.org/wp-content/uploads/2025/06/Atom-Logo-1.jpg" className="h-10 w-auto opacity-50 mix-blend-multiply" />
+                    <img src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" className="h-10 w-auto opacity-50 mix-blend-multiply" alt="Atom Logo" />
                     <Link to="/atom" className="text-brand-purple font-bold flex items-center gap-2 hover:gap-4 transition-all">
                       Learn More <ArrowRight size={18} />
                     </Link>
@@ -109,7 +109,7 @@ const Home: React.FC = () => {
                <div className="h-64 overflow-hidden relative">
                  <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 to-transparent z-10"></div>
                  <img 
-                   src="https://nxfindia.org/wp-content/uploads/2025/06/IMG_5230-scaled.jpg" 
+                   src="https://arknetimages.com/wp-content/uploads/2026/02/IMG_5359-scaled.jpg" 
                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
                    alt="OSFF"
                  />
@@ -123,7 +123,7 @@ const Home: React.FC = () => {
                     Celebrating short-format storytelling in the heart of the Blue Mountains.
                   </p>
                   <div className="flex justify-between items-center">
-                    <img src="https://nxfindia.org/wp-content/uploads/2025/09/OSFF-@-2-scaled.jpg" className="h-10 w-auto object-contain opacity-70" />
+                    <img src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" className="h-10 w-auto object-contain opacity-70" alt="OSFF Logo" />
                     <Link to="/osff" className="text-brand-purple font-bold flex items-center gap-2 hover:gap-4 transition-all">
                       Visit Page <ArrowRight size={18} />
                     </Link>
@@ -174,12 +174,12 @@ const Home: React.FC = () => {
               {/* Body Content */}
               <div className="px-6 pb-6 pt-3 relative bg-white">
                  
-                 {/* Floating Logo - No Frame, Bigger Size */}
-                 <div className="absolute -top-14 left-6 w-28 h-28 z-10 filter drop-shadow-xl transform hover:scale-105 transition-transform">
+                 {/* Floating Logo - No Frame/Box */}
+                 <div className="absolute -top-14 left-6 w-28 h-28 z-10 transform hover:scale-105 transition-transform">
                     <img 
-                       src="https://nxfindia.org/wp-content/uploads/2025/06/Atom-Logo-1.jpg" 
+                       src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" 
                        alt="ATOM Logo" 
-                       className="w-full h-full object-contain rounded-xl"
+                       className="w-full h-full object-contain"
                     />
                  </div>
 

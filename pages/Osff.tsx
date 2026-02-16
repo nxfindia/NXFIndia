@@ -15,9 +15,13 @@ const Osff: React.FC = () => {
   ];
 
   const galleryImages = [
-    { src: "https://nxfindia.org/wp-content/uploads/2025/10/IMG_5359-scaled-1.jpg", caption: "The Screening Hall" },
-    { src: "https://nxfindia.org/wp-content/uploads/2025/10/IF5A9696-scaled-2.jpg", caption: "Audience Engagement" },
-    { src: "https://nxfindia.org/wp-content/uploads/2025/10/JOSH0029-scaled-1.jpg", caption: "Victory Moments" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5359-scaled.jpg", caption: "The Screening Hall" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5385-scaled.jpg", caption: "Festival Highlights" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5364-scaled.jpg", caption: "Audience Engagement" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5352-scaled.jpg", caption: "Cinematic Moments" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5322-scaled.jpg", caption: "Cultural Exchange" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5230-scaled.jpg", caption: "Short Film Celebration" },
+    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5228-scaled.jpg", caption: "In the Blue Mountains" }
   ];
 
   const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
@@ -36,7 +40,7 @@ const Osff: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 relative z-10 flex flex-col items-center text-center">
           <div className="mb-8 bg-white p-4 rounded-xl shadow-lg">
              <img 
-                src="https://nxfindia.org/wp-content/uploads/2025/09/OSFF-@-2-scaled.jpg" 
+                src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" 
                 alt="OSFF Logo" 
                 className="h-24 md:h-32 w-auto object-contain"
              />
@@ -75,7 +79,7 @@ const Osff: React.FC = () => {
                 </div>
                 <div className="rounded-2xl overflow-hidden h-80 relative shadow-lg transform rotate-2 hover:rotate-0 transition-transform duration-500">
                    <img 
-                     src="https://nxfindia.org/wp-content/uploads/2026/02/DSC_8087-scaled.jpg" 
+                     src="https://arknetimages.com/wp-content/uploads/2026/02/DSC_8087-scaled.jpg" 
                      className="w-full h-full object-cover"
                      alt="9th Mile"
                    />

@@ -49,18 +49,10 @@ const AtomFestival: React.FC = () => {
   ];
 
   const galleryImages = [
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_6115.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_5448-1-scaled.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_5380-scaled.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9130.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9160.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9157.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/IMG_9149.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/ATOM-Rathinam-5-scaled.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/274A4704-scaled.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/01.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/02-scaled.jpg",
-    "https://nxfindia.org/wp-content/uploads/2026/02/03jpg.jpg"
+    "https://arknetimages.com/wp-content/uploads/2026/02/01.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/02-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/03jpg.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/04-scaled.jpg"
   ];
 
   return (
@@ -73,7 +65,7 @@ const AtomFestival: React.FC = () => {
 
         <div className="max-w-5xl mx-auto text-center relative z-10">
            <img 
-             src="https://nxfindia.org/wp-content/uploads/2025/06/Atom-Logo-1.jpg" 
+             src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" 
              alt="ATOM Film Festival" 
              className="h-32 md:h-40 w-auto object-contain mx-auto mb-8 mix-blend-screen filter brightness-150 contrast-125"
            />

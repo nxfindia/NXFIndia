@@ -32,7 +32,7 @@ const Navbar: React.FC = () => {
         {/* Brand - Logo Only */}
         <Link to="/" className="flex items-center group relative z-50" onClick={() => setIsOpen(false)}>
            <img 
-             src="https://nxfindia.org/wp-content/uploads/2026/02/NNF-logo-scaled.png" 
+             src="https://arknetimages.com/wp-content/uploads/2026/02/NNF-logo-scaled.png" 
              alt="NilgirisNext Foundation" 
              className="h-16 md:h-20 w-auto object-contain transition-transform group-hover:scale-105 drop-shadow-md"
            />
