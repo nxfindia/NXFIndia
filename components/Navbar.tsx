@@ -27,10 +27,10 @@ const Navbar: React.FC = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-md transition-all duration-300">
-      <div className="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex justify-between items-center">
+      <div className="relative z-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-24 flex justify-between items-center bg-white/95">
         
         {/* Brand - Logo Only */}
-        <Link to="/" className="flex items-center group relative">
+        <Link to="/" className="flex items-center group relative z-50" onClick={() => setIsOpen(false)}>
            <img 
              src="https://nxfindia.org/wp-content/uploads/2026/02/NNF-logo-scaled.png" 
              alt="NilgirisNext Foundation" 
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
         {/* Mobile Toggle */}
         <button 
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-slate-800 p-2 hover:bg-slate-100 rounded-lg transition-colors"
+          className="md:hidden text-slate-800 p-2 hover:bg-slate-100 rounded-lg transition-colors relative z-50"
           aria-label={isOpen ? "Close menu" : "Open menu"}
         >
           {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -90,25 +90,25 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="fixed inset-0 bg-white z-40 pt-28 px-6 overflow-y-auto animate-in fade-in slide-in-from-top-5 duration-200">
-          <div className="space-y-4">
+        <div className="fixed inset-0 bg-white z-40 pt-32 px-6 overflow-y-auto animate-fade-in-up">
+          <div className="flex flex-col gap-6 pb-20">
             {navItems.map((item) => (
               <div key={item.label} className="border-b border-slate-100 pb-4">
                  <Link 
                    to={item.path}
                    onClick={() => setIsOpen(false)}
-                   className="text-2xl font-serif font-bold text-slate-900 block mb-2"
+                   className="text-3xl font-serif font-bold text-slate-900 block mb-3"
                  >
                    {item.label}
                  </Link>
                  {item.children && (
-                   <div className="pl-4 space-y-3 mt-2">
+                   <div className="pl-4 flex flex-col gap-3">
                       {item.children.map(child => (
                         <Link 
                           key={child.path}
                           to={child.path}
                           onClick={() => setIsOpen(false)}
-                          className="block text-sm font-medium text-slate-500 uppercase tracking-wider"
+                          className="text-lg font-medium text-slate-500 hover:text-brand-purple transition-colors"
                         >
                           {child.label}
                         </Link>
@@ -117,6 +117,12 @@ const Navbar: React.FC = () => {
                  )}
               </div>
             ))}
+
+            <div className="mt-8 text-slate-400 text-sm">
+                <p className="font-bold uppercase tracking-widest mb-2">Connect</p>
+                <p>Coimbatore & The Nilgiris</p>
+                <p>contact@nxfindia.org</p>
+            </div>
           </div>
         </div>
       )}
