@@ -120,7 +120,7 @@ const Home: React.FC = () => {
                </div>
                <div className="p-8">
                   <p className="text-slate-600 mb-8 leading-relaxed">
-                    Celebrating short-format storytelling in the heart of the Blue Mountains.
+                    Celebrating global short-format storytelling amidst the unique majesty of the Blue Mountains.
                   </p>
                   <div className="flex justify-between items-center">
                     <img src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" className="h-10 w-auto object-contain opacity-70" alt="OSFF Logo" />
