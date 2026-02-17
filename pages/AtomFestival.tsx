@@ -34,18 +34,22 @@ const AtomFestival: React.FC = () => {
   }, [showVisionModal]);
 
   const ngoPartners = [
-    { name: "KV", src: "https://nxfindia.org/wp-content/uploads/2026/02/KV-logo-new.jpg" },
-    { name: "Green Hub", src: "https://nxfindia.org/wp-content/uploads/2026/02/Green-Hub.png" },
-    { name: "Dusty Foot Foundation", src: "https://nxfindia.org/wp-content/uploads/2026/02/Dusty-Foot-Foundation.png" },
-    { name: "BNHS", src: "https://nxfindia.org/wp-content/uploads/2026/02/BNHS-GREEN-LOGO-1.png" },
-    { name: "PSBT", src: "https://nxfindia.org/wp-content/uploads/2026/02/PSBT-Black-Thick.png" },
-    { name: "Toxics Link", src: "https://nxfindia.org/wp-content/uploads/2026/02/Toxics-logo_20250628_123456_0000-scaled.png" },
+    { name: "PSBT", src: "https://arknetimages.com/wp-content/uploads/2026/02/PSBT-Logo-white-bg-1.png" },
+    { name: "Mahasakti Seva Kendra", src: "https://arknetimages.com/wp-content/uploads/2026/02/Mahasakti-Seva-Kendra.png" },
+    { name: "KV", src: "https://arknetimages.com/wp-content/uploads/2026/02/KV-logo-new-1.jpg" },
+    { name: "Green Hub", src: "https://arknetimages.com/wp-content/uploads/2026/02/Green-Hub-2.png" },
+    { name: "Dusty Foot Foundation", src: "https://arknetimages.com/wp-content/uploads/2026/02/Dusty-Foot-Foundation-2.png" },
+    { name: "BNHS", src: "https://arknetimages.com/wp-content/uploads/2026/02/BNHS-GREEN-LOGO-1-2.png" },
+    { name: "Toxics Link", src: "https://arknetimages.com/wp-content/uploads/2026/02/toxicslink-logo-6.jpg" },
+    { name: "Srishti Films", src: "https://arknetimages.com/wp-content/uploads/2026/02/Srishti-Films-logo-Kalpavriksh-scaled.png" },
+    { name: "Vikalp", src: "https://arknetimages.com/wp-content/uploads/2026/02/Vikalp-Logo.png" }
   ];
 
   const institutionalPartners = [
-    { name: "WCC", src: "https://nxfindia.org/wp-content/uploads/2026/02/WCCLogo.png" },
-    { name: "Academic Partner", src: "https://nxfindia.org/wp-content/uploads/2026/02/Logo-scaled.png" },
-    { name: "TIPS / RGI", src: "https://nxfindia.org/wp-content/uploads/2026/02/TIPS-LOGO-RGI-LOGO-2.png" },
+    { name: "Avinashilingam Institute", src: "https://arknetimages.com/wp-content/uploads/2026/02/avinashilingam_institute_for_home_science_and_high_logo.jpeg" },
+    { name: "RCAS", src: "https://arknetimages.com/wp-content/uploads/2026/02/logo-rcas.jpg" },
+    { name: "WCC", src: "https://arknetimages.com/wp-content/uploads/2026/02/WCC.png" },
+    { name: "Partner", src: "https://arknetimages.com/wp-content/uploads/2026/02/Logo-1-scaled.png" }
   ];
 
   const galleryImages = [
