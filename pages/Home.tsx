@@ -93,7 +93,7 @@ const Home: React.FC = () => {
                </div>
                <div className="p-8">
                   <p className="text-slate-600 mb-8 leading-relaxed">
-                    A unique traveling festival exploring the intersection of science, reality, and cinema.
+                    A unique traveling documentary film festival, hosted exclusively at educational institutions
                   </p>
                   <div className="flex justify-between items-center">
                     <img src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" className="h-10 w-auto opacity-50 mix-blend-multiply" alt="Atom Logo" />
