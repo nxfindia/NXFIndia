@@ -29,7 +29,8 @@ const Home: React.FC = () => {
     { name: "Avinashilingam Institute", src: "https://arknetimages.com/wp-content/uploads/2026/02/avinashilingam_institute_for_home_science_and_high_logo.jpeg" },
     { name: "RCAS", src: "https://arknetimages.com/wp-content/uploads/2026/02/logo-rcas.jpg" },
     { name: "WCC", src: "https://arknetimages.com/wp-content/uploads/2026/02/WCC.png" },
-    { name: "Partner", src: "https://arknetimages.com/wp-content/uploads/2026/02/Logo-1-scaled.png" }
+    { name: "Partner", src: "https://arknetimages.com/wp-content/uploads/2026/02/Logo-1-scaled.png" },
+    { name: "KSA", src: "https://arknetimages.com/wp-content/uploads/2026/02/KSA.jpg" }
   ];
 
   return (

@@ -4,14 +4,126 @@ import { MapPin, Trophy, ChevronLeft, ChevronRight, Play } from 'lucide-react';
 const Osff: React.FC = () => {
   // --- Data ---
   const juryMembers = [
-    { name: "Merve Betül Dural", country: "Turkey", bio: "Architect & documenter.", image: "https://nxfindia.org/wp-content/uploads/2025/10/Betul-Dural.jpeg" },
-    { name: "Rostam Nazar", country: "Iran", bio: "Director of 12 films.", image: "https://nxfindia.org/wp-content/uploads/2025/10/Rostam-Nazari.jpg" },
-    { name: "Hamid Vatanparast", country: "Iran", bio: "Writer, director.", image: "https://nxfindia.org/wp-content/uploads/2025/10/Hamid-3-scaled-1.jpg" },
-    { name: "Amol Bhagat", country: "India", bio: "Bollywood director.", image: "https://nxfindia.org/wp-content/uploads/2025/10/Amol-1-scaled-1.jpg" },
-    { name: "Afzal Khan", country: "Nepal", bio: "Creative Director.", image: "https://nxfindia.org/wp-content/uploads/2025/10/AKNP-1.jpeg" },
-    { name: "Arunansh Bhatt", country: "India", bio: "Netflix Composer.", image: "https://nxfindia.org/wp-content/uploads/2025/10/Arunansh-Bhatt.png" },
-    { name: "Dheeraj Jindal", country: "India", bio: "Award-winning Director.", image: "https://nxfindia.org/wp-content/uploads/2025/10/dheeraj-scaled-1.jpg" },
-    { name: "Carlos Dóniz", country: "Spain", bio: "Poet & Filmmaker.", image: "https://nxfindia.org/wp-content/uploads/2025/10/Carlos-Doniz-Alamo.jpg" },
+    {
+      name: "Afzal Khan",
+      country: "Nepal",
+      bio: "Afzal Khan is a multidisciplinary creative professional with over two decades of experience. His work spans creative direction, advertising films, art direction, photography, graphic design, writing, interior design, and marketing communication.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Afzal-Khan.jpg"
+    },
+    {
+      name: "Akshay Prakash Vaskar",
+      country: "Mumbai (Dadar), India",
+      bio: "Akshay Prakash Vaskar is an Indian film director working across short films, ad films, and television serials. He has directed over 35 short films and multiple advertising projects.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Akshay-Prakash-Vaskar.jpg"
+    },
+    {
+      name: "Amol Bhagat",
+      country: "Maharashtra, India",
+      bio: "Amol Bhagat is an Indian filmmaker, writer, and film marketing professional with more than twelve years of experience. He is among the youngest writer-directors working in Bollywood.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Amol-Bhagat.png"
+    },
+    {
+      name: "Armin Azizi",
+      country: "Sanandaj, Iran",
+      bio: "Born in 1993, Armin Azizi is an actor, director, writer, and producer. He began working in film in 2005 and has been professionally active since 2017.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Armin-Azizi.jpeg"
+    },
+    {
+      name: "Arunansh Bhatt",
+      country: "Lucknow / New Delhi, India",
+      bio: "Arunansh Bhatt is a filmmaker and music composer from Lucknow. He has composed for advertising films, documentaries, short films, and feature projects.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Arunansh-Bhatt.png"
+    },
+    {
+      name: "Carlos Dóniz Álamo",
+      country: "Tenerife, Spain",
+      bio: "Carlos Dóniz Álamo is a filmmaker and screenwriter with a strong passion for storytelling. He began his creative journey through poetry, which led him to discover cinema.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Carlos-Doniz-Alamo.jpg"
+    },
+    {
+      name: "Dheeraj Jindal",
+      country: "Mumbai, India",
+      bio: "Dheeraj Jindal is a Mumbai-based filmmaker working across fiction, non-fiction, and advertising. His debut short film The School Bag was screened at 106 international festivals.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Dheeraj-Jindal.jpg"
+    },
+    {
+      name: "Dinu Dinesh Kumar",
+      country: "Tamil Nadu, India",
+      bio: "Dinu Dinesh Kumar is an award-winning filmmaker and academician. He has directed acclaimed short films, documentaries, PSAs, and music videos.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Dinu-Dinesh-Kumar-2.jpeg"
+    },
+    {
+      name: "Dr. C Guna Sekaran",
+      country: "Coimbatore, India",
+      bio: "Dr. C Guna Sekaran is the Campus Head of Rathinam Group of Institutions. With a career spanning over four decades, he has held leadership positions at companies such as Royal Enfield.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Dr-C-Guna-Sekaran.jpg"
+    },
+    {
+      name: "Hamid Vatanparast",
+      country: "Iran",
+      bio: "Hamid Vatanparast is a writer, director, and producer known for his narrative-driven approach to filmmaking. His films emphasize character development and structured storytelling.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Logo-1-scaled.png" 
+    },
+    {
+      name: "Mani Natarajan",
+      country: "Chennai, India",
+      bio: "Mani Natarajan is a cinematographer, film director, short story writer, and street dramatist with over 25 years of experience in the Tamil film industry.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Maninatarajan.jpg"
+    },
+    {
+      name: "Md Ashraful Alam (Ashraf Shishir)",
+      country: "Dhaka, Bangladesh",
+      bio: "Md Ashraful Alam, professionally known as Ashraf Shishir, is a Bangladeshi filmmaker, scriptwriter, and human rights advocate. He has served as a juror at more than 50 international film festivals.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Md-Ashraful-Alam-Ashraf-Shishir.jpg"
+    },
+    {
+      name: "Merve Betül Dural (Betty Güler)",
+      country: "Turkey / Germany",
+      bio: "Merve Betül Dural, also known as Betty Güler, is an architect and visual storyteller. She is currently pursuing professional photography training in Germany.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Merve-Betul-Dural-scaled.jpeg"
+    },
+    {
+      name: "MinSeok Jeon",
+      country: "South Korea",
+      bio: "MinSeok Jeon is a Professor of Cartoon Animation at Joongbu University. He holds a BFA in Animation from Hongik University and an MFA in Computer Art from SVA.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/MinSeok-Jeon.jpg"
+    },
+    {
+      name: "Nithya Gopalakrishnan",
+      country: "Chennai, India",
+      bio: "Nithya Gopalakrishnan is a filmmaker and storyteller with expertise in short films, documentaries, and digital media. She has contributed to multiple international and national film projects.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Logo-1-scaled.png"
+    },
+    {
+      name: "Orangel Manuel Lugo Valles",
+      country: "Península de Paraguaná, Venezuela",
+      bio: "Orangel Manuel Lugo Valles graduated from the National Film School in 2015. He directed and wrote short films including Guasare, Mireyita, Agua Potable, and La Bejuca.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Orangel-Manuel-Lugo-Valles.jpg"
+    },
+    {
+      name: "Ram Arunachalam",
+      country: "Chennai, India",
+      bio: "Ram Arunachalam is an actor, filmmaker, and writer with extensive experience in Tamil cinema, web series, short films, and commercials.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Ram-Arunachalam.jpg"
+    },
+    {
+      name: "Ravindran Mani D",
+      country: "Bangalore, India",
+      bio: "Ravindran Mani D is a filmmaker and creative professional based in Bangalore with more than a decade of experience. He has worked in feature films, shorts, commercials, and digital content.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/RAVINDRAN-MANI-D.jpg"
+    },
+    {
+      name: "Rostam Nazar",
+      country: "Iran",
+      bio: "Rostam Nazar is an Iranian director with experience in short films and documentaries. He has created twelve films that have been screened at more than fifty international festivals.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/Rostam-Nazar.png"
+    },
+    {
+      name: "Salaheedin Nooori",
+      country: "Iran",
+      bio: "Born in 1983, Salaheedin Nooori is a director, writer, and producer. In addition to filmmaking, he holds a law degree and practices as a legal professional.",
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/SALAHEEDIN-NOOORI.jpg"
+    }
   ];
 
   const galleryImages = [
@@ -95,19 +207,19 @@ const Osff: React.FC = () => {
              The International Jury
            </h2>
 
-           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">
               {juryMembers.map((member, i) => (
                  <div key={i} className="group text-center">
-                    <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 relative shadow-md">
+                    <div className="w-full aspect-[3/4] rounded-2xl overflow-hidden mb-4 relative shadow-md bg-white">
                        <img 
                          src={member.image} 
                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" 
                          alt={member.name}
                        />
                     </div>
-                    <h3 className="text-lg font-bold text-slate-900">{member.name}</h3>
-                    <p className="text-xs font-bold uppercase tracking-wider text-brand-purple mb-1">{member.country}</p>
-                    <p className="text-xs text-slate-500">{member.bio.substring(0, 50)}...</p>
+                    <h3 className="text-lg font-bold text-slate-900 leading-tight mb-1">{member.name}</h3>
+                    <p className="text-xs font-bold uppercase tracking-wider text-brand-purple mb-2">{member.country}</p>
+                    <p className="text-xs text-slate-500 line-clamp-3 leading-relaxed">{member.bio}</p>
                  </div>
               ))}
            </div>
