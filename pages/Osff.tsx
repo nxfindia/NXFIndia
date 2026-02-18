@@ -166,12 +166,12 @@ const Osff: React.FC = () => {
           </h1>
           
           <p className="text-xl text-slate-300 max-w-2xl mb-10">
-            Celebrating the art of the short film against the misty backdrop of the Nilgiris.
+            A celebration of short film and the stories that bring the world together.
           </p>
 
           <div className="flex flex-wrap justify-center gap-6">
             <button className="bg-white text-brand-dark px-8 py-4 rounded-full font-bold text-lg shadow-lg hover:bg-brand-gold transition-colors flex items-center gap-2">
-              <Play size={20} fill="currentColor" /> 9th Edition 2025
+              <Play size={20} fill="currentColor" /> 10th Edition
             </button>
             <a href="https://forms.gle/xchE46Dee3qWuMCH8" target="_blank" className="border border-white/30 hover:bg-white/10 px-8 py-4 rounded-full font-bold text-lg transition-colors">
               Delegate Registration
@@ -206,7 +206,7 @@ const Osff: React.FC = () => {
       <section className="py-24 px-6 bg-slate-50">
         <div className="max-w-7xl mx-auto">
            <h2 className="text-center text-4xl font-serif font-bold mb-16 text-slate-900">
-             The International Jury
+             The International Jury 2025
            </h2>
 
            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8">

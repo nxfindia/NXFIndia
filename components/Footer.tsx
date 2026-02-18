@@ -11,13 +11,16 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-2">
             <h2 className="text-3xl font-serif font-bold mb-6 bg-gradient-to-r from-brand-purple to-brand-red bg-clip-text text-transparent inline-block">NilgirisNext.</h2>
             <p className="text-slate-400 text-lg leading-relaxed max-w-md mb-8">
-              Fostering a creative ecosystem where art, ecology, and community thrive together.
+              Uniting art, culture, and earth for a sustainable human future.
             </p>
             <div className="flex gap-4">
                {[
-                 { i: Instagram, l: '#' }, { i: Facebook, l: '#' }, { i: Youtube, l: '#' }, { i: Mail, l: 'mailto:contact@nxfindia.org' }
+                 { i: Instagram, l: 'https://instagram.com/nxfindia' }, 
+                 { i: Facebook, l: 'https://www.facebook.com/nxfindia' }, 
+                 { i: Youtube, l: 'https://youtube.com/@nilgirifilmclub' }, 
+                 { i: Mail, l: 'mailto:contact@nxfindia.org' }
                ].map((s, i) => (
-                 <a key={i} href={s.l} className="bg-slate-800 p-3 rounded-full hover:bg-brand-purple hover:-translate-y-1 transition-all">
+                 <a key={i} href={s.l} target={s.i !== Mail ? "_blank" : undefined} rel={s.i !== Mail ? "noreferrer" : undefined} className="bg-slate-800 p-3 rounded-full hover:bg-brand-purple hover:-translate-y-1 transition-all">
                    <s.i size={20} />
                  </a>
                ))}
