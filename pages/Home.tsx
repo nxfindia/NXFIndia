@@ -349,55 +349,55 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SUBMISSION POPUP */}
+      {/* SUBMISSION POPUP - REDESIGNED */}
       {showSubmissionModal && (
-        <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-10 fade-in duration-700">
-           <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden w-80 relative font-sans">
+        <div className="fixed bottom-0 sm:bottom-6 left-0 right-0 sm:left-auto sm:right-6 z-50 p-4 sm:p-0 flex justify-center sm:block">
+           <div className="bg-white/95 backdrop-blur-md border border-slate-200 shadow-2xl rounded-2xl sm:rounded-xl overflow-hidden w-full max-w-sm animate-slide-up relative">
               
-              {/* Close Button */}
-              <button 
-                onClick={() => setShowSubmissionModal(false)}
-                className="absolute top-2 right-2 p-1.5 bg-black/10 hover:bg-black/20 text-white rounded-full transition-colors z-20 backdrop-blur-sm"
-              >
-                <X size={14} />
-              </button>
+              {/* Decorative Top Line */}
+              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-brand-gold via-brand-red to-brand-purple"></div>
+              
+              <div className="p-6 relative">
+                 {/* Close Button */}
+                 <button 
+                   onClick={() => setShowSubmissionModal(false)}
+                   className="absolute top-4 right-4 text-slate-400 hover:text-slate-900 transition-colors bg-slate-50 hover:bg-slate-100 p-1 rounded-full"
+                 >
+                   <X size={16} />
+                 </button>
 
-              {/* Header Image */}
-              <div className="h-24 bg-gradient-to-br from-brand-red to-rose-900 relative">
-                 <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
-              </div>
-
-              {/* Body Content */}
-              <div className="px-6 pb-6 pt-0 relative bg-white">
-                 
-                 {/* Floating Logo */}
-                 <div className="-mt-10 mb-4 inline-block bg-white p-2 rounded-xl shadow-lg border border-slate-100">
-                    <img 
-                       src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" 
-                       alt="ATOM Logo" 
-                       className="w-16 h-16 object-contain"
-                    />
+                 <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 bg-white rounded-lg border border-slate-100 flex items-center justify-center shadow-sm flex-shrink-0">
+                       <img 
+                          src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" 
+                          alt="ATOM" 
+                          className="w-8 h-8 object-contain mix-blend-multiply opacity-80"
+                       />
+                    </div>
+                    <div className="pr-6">
+                       <h3 className="font-serif font-bold text-slate-900 text-lg leading-tight mb-1">Global Call for Entries</h3>
+                       <p className="text-[10px] font-bold uppercase tracking-widest text-brand-purple">ATOM Film Festival</p>
+                    </div>
                  </div>
 
-                 <h3 className="font-bold text-slate-900 text-lg leading-tight mb-2">Global Call for Entries</h3>
-                 <p className="text-xs text-slate-500 mb-5 leading-relaxed">
-                   ATOM Film Festival is accepting documentary submissions worldwide.
+                 <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                   We are accepting documentary submissions worldwide exploring ecology, culture, and society.
                  </p>
 
-                 <div className="flex gap-2">
+                 <div className="flex gap-3">
                    <a 
                      href="https://filmmakers.festhome.com/f/9456" 
                      target="_blank"
                      rel="noreferrer"
-                     className="flex-1 bg-brand-dark text-white py-2.5 rounded-lg font-bold text-xs hover:bg-brand-purple transition-all text-center shadow-lg shadow-brand-dark/20"
+                     className="flex-1 bg-slate-900 text-white py-3 rounded-lg font-bold text-sm hover:bg-brand-purple transition-all text-center shadow-lg hover:shadow-xl flex items-center justify-center gap-2 group"
                    >
-                     Submit Now
+                     Submit Now <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                    </a>
                    <button 
                      onClick={() => setShowSubmissionModal(false)}
-                     className="px-4 py-2.5 bg-slate-100 text-slate-500 font-bold text-xs hover:bg-slate-200 hover:text-slate-700 rounded-lg transition-colors"
+                     className="px-4 py-3 bg-white border border-slate-200 text-slate-500 font-bold text-sm hover:bg-slate-50 hover:text-slate-900 rounded-lg transition-colors"
                    >
-                     Later
+                     Dismiss
                    </button>
                  </div>
               </div>
