@@ -1,55 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Star, Heart, X, Film, Quote, Globe, Users, Trophy, MapPin, Calendar, MonitorPlay, Building, GraduationCap } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Star, Heart, X, Film, Quote } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PartnerMarquee from '../components/PartnerMarquee';
-
-// --- Animated Counter Component ---
-const Counter = ({ end, duration = 2000, suffix = "" }: { end: number, duration?: number, suffix?: string }) => {
-  const [count, setCount] = useState(0);
-  const countRef = useRef<HTMLSpanElement>(null);
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (countRef.current) {
-      observer.observe(countRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!isVisible) return;
-
-    let start = 0;
-    const steps = 60;
-    const increment = end / steps;
-    const stepTime = duration / steps;
-
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
-        setCount(end);
-        clearInterval(timer);
-      } else {
-        setCount(Math.ceil(start));
-      }
-    }, stepTime);
-
-    return () => clearInterval(timer);
-  }, [isVisible, end, duration]);
-
-  return <span ref={countRef}>{count}{suffix}</span>;
-};
 
 const Home: React.FC = () => {
   const [showSubmissionModal, setShowSubmissionModal] = useState(false);
@@ -153,10 +105,7 @@ const Home: React.FC = () => {
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
          <div className="max-w-6xl mx-auto text-center relative z-10">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm mb-8 animate-fade-in-up">
-              <Star className="w-4 h-4 text-brand-gold fill-current" />
-              <span className="text-sm font-bold uppercase tracking-wider text-slate-600">Celebrating Cinema & Culture</span>
-            </div>
+            {/* REMOVED: "Celebrating Cinema & Culture" Subtitle */}
             
             <h1 className="text-6xl md:text-8xl font-serif font-bold mb-8 leading-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               Where <span className="text-gradient">Stories</span> Come<br/>To Life.
@@ -177,11 +126,11 @@ const Home: React.FC = () => {
          </div>
       </section>
 
-      {/* IMPACT METRICS SECTION (Clean & Simple) */}
+      {/* IMPACT METRICS SECTION (Clean & Static) */}
       <section className="py-20 px-6 bg-white border-y border-slate-100">
          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-               <span className="text-brand-purple font-bold uppercase tracking-widest text-xs mb-2 block">Our Reach</span>
+               {/* REMOVED: "Our Reach" Subtitle */}
                <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Impact & Legacy</h2>
             </div>
             
@@ -198,20 +147,20 @@ const Home: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                      <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
-                            <Counter end={5} />
+                        <div className="text-4xl font-bold text-slate-900 mb-1">
+                            5
                         </div>
                         <p className="text-sm font-medium text-slate-500">Colleges Hosted</p>
                      </div>
                      <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
-                            <Counter end={400} suffix="+" />
+                        <div className="text-4xl font-bold text-slate-900 mb-1">
+                            400+
                         </div>
                         <p className="text-sm font-medium text-slate-500">Documentaries</p>
                      </div>
                      <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
-                            <Counter end={10000} suffix="+" />
+                        <div className="text-4xl font-bold text-slate-900 mb-1">
+                            10,000+
                         </div>
                         <p className="text-sm font-medium text-slate-500">Students Impacted</p>
                      </div>
@@ -229,20 +178,20 @@ const Home: React.FC = () => {
 
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                      <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
-                            <Counter end={10} />
+                        <div className="text-4xl font-bold text-slate-900 mb-1">
+                            10
                         </div>
                         <p className="text-sm font-medium text-slate-500">Years Running</p>
                      </div>
                      <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
-                            <Counter end={1300} suffix="+" />
+                        <div className="text-4xl font-bold text-slate-900 mb-1">
+                            1,300+
                         </div>
                         <p className="text-sm font-medium text-slate-500">Short Films</p>
                      </div>
                      <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
-                            <Counter end={60} suffix="+" />
+                        <div className="text-4xl font-bold text-slate-900 mb-1">
+                            60+
                         </div>
                         <p className="text-sm font-medium text-slate-500">Countries</p>
                      </div>
