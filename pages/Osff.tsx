@@ -62,7 +62,7 @@ const Osff: React.FC = () => {
       name: "Hamid Vatanparast",
       country: "Iran",
       bio: "Hamid Vatanparast is a writer, director, and producer known for his narrative-driven approach to filmmaking. His directorial works include Asiyeh, Double Bridge, Alikija, and Plateau. His films emphasize character development and structured storytelling. With experience across writing, directing, and producing, he brings a comprehensive understanding of film production and creative direction to his work.",
-      image: "https://arknetimages.com/wp-content/uploads/2026/02/Logo-1-scaled.png" 
+      image: "https://arknetimages.com/wp-content/uploads/2026/02/WhatsApp-Image-2026-02-18-at-11.08.42.jpeg" 
     },
     {
       name: "Mani Natarajan",

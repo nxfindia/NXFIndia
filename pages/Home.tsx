@@ -1,10 +1,60 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Star, Heart, X, Film } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Star, Heart, X, Film, Quote, Globe, Users, Trophy, MapPin, Calendar, MonitorPlay, Building, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PartnerMarquee from '../components/PartnerMarquee';
 
+// --- Animated Counter Component ---
+const Counter = ({ end, duration = 2000, suffix = "" }: { end: number, duration?: number, suffix?: string }) => {
+  const [count, setCount] = useState(0);
+  const countRef = useRef<HTMLSpanElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (countRef.current) {
+      observer.observe(countRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isVisible) return;
+
+    let start = 0;
+    const steps = 60;
+    const increment = end / steps;
+    const stepTime = duration / steps;
+
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.ceil(start));
+      }
+    }, stepTime);
+
+    return () => clearInterval(timer);
+  }, [isVisible, end, duration]);
+
+  return <span ref={countRef}>{count}{suffix}</span>;
+};
+
 const Home: React.FC = () => {
   const [showSubmissionModal, setShowSubmissionModal] = useState(false);
+  const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
     // Show modal after a short delay for smooth entrance
@@ -33,10 +83,70 @@ const Home: React.FC = () => {
     { name: "KSA", src: "https://arknetimages.com/wp-content/uploads/2026/02/KSA.jpg" }
   ];
 
+  const testimonials = [
+    // OSFF Reviews
+    {
+      id: 1,
+      text: "It was a great experience watching my short film on the big screen. The festival was filled with lots of wonderful short films. Happy to be a part of this Festival.",
+      author: "Vishal TR",
+      role: "Filmmaker",
+      festival: "OSFF"
+    },
+    {
+      id: 2,
+      text: "A festival with a detailed program and information along with respect for the filmmaker; I hope I will have the chance to attend the festival in the following years.",
+      author: "Salahaddien Noori",
+      role: "Filmmaker",
+      festival: "OSFF"
+    },
+    {
+      id: 3,
+      text: "Awesome festival with great communication and professionalism. So grateful to have my short film, Salvation, screened at a beautiful cinema with new audience.",
+      author: "Zane",
+      role: "Filmmaker",
+      festival: "OSFF"
+    },
+    {
+      id: 6,
+      text: "The festival's impeccable organization, warm hospitality, and dedication to celebrating diverse voices in filmmaking have left a lasting impression on me.",
+      author: "Ravindra Mani",
+      role: "Filmmaker",
+      festival: "OSFF"
+    },
+    // ATOM Reviews
+    {
+      id: 101,
+      text: "Didn't know documentaries about the downfall of a textile industry would be so thought provoking, on how the act of consumerism can remake or break the industry.",
+      author: "Audience Member",
+      role: "The T-Shirt Industry",
+      festival: "ATOM"
+    },
+    {
+      id: 103,
+      text: "It inspired a sense of responsibility, encouraging individuals to take small but meaningful steps towards a healthier and more sustainable environment.",
+      author: "Faculty Review",
+      role: "India’s Climate Fever",
+      festival: "ATOM"
+    }
+  ];
+
+  // Auto-rotate testimonials
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentTestimonialIndex((prev) => (prev + 1) % testimonials.length);
+        setIsAnimating(false);
+      }, 500); // Wait for fade out
+    }, 6000); // Change every 6 seconds
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
   return (
     <div className="min-h-screen bg-paper pt-28 overflow-x-hidden">
       
-      {/* HERO SECTION: Vibrant & Welcoming */}
+      {/* HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center justify-center px-6 overflow-hidden">
          {/* Background Decoration */}
          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand-purple/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
@@ -67,15 +177,91 @@ const Home: React.FC = () => {
          </div>
       </section>
 
+      {/* IMPACT METRICS SECTION (Clean & Simple) */}
+      <section className="py-20 px-6 bg-white border-y border-slate-100">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+               <span className="text-brand-purple font-bold uppercase tracking-widest text-xs mb-2 block">Our Reach</span>
+               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Impact & Legacy</h2>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+               
+               {/* ATOM Block */}
+               <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col h-full relative overflow-hidden group hover:shadow-md transition-all">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                      <div className="p-3 bg-brand-teal/10 rounded-2xl">
+                         <img src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" alt="ATOM" className="h-12 w-auto mix-blend-multiply" />
+                      </div>
+                      <h3 className="text-2xl font-serif font-bold text-slate-900">Atom Film Festival</h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                     <div className="text-center sm:text-left">
+                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
+                            <Counter end={5} />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500">Colleges Hosted</p>
+                     </div>
+                     <div className="text-center sm:text-left">
+                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
+                            <Counter end={400} suffix="+" />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500">Documentaries</p>
+                     </div>
+                     <div className="text-center sm:text-left">
+                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
+                            <Counter end={10000} suffix="+" />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500">Students Impacted</p>
+                     </div>
+                  </div>
+               </div>
+
+               {/* OSFF Block */}
+               <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col h-full relative overflow-hidden group hover:shadow-md transition-all">
+                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
+                      <div className="p-3 bg-brand-red/10 rounded-2xl">
+                         <img src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" alt="OSFF" className="h-12 w-auto object-contain" />
+                      </div>
+                      <h3 className="text-2xl font-serif font-bold text-slate-900">Ooty Short Film Festival</h3>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                     <div className="text-center sm:text-left">
+                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
+                            <Counter end={10} />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500">Years Running</p>
+                     </div>
+                     <div className="text-center sm:text-left">
+                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
+                            <Counter end={1300} suffix="+" />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500">Short Films</p>
+                     </div>
+                     <div className="text-center sm:text-left">
+                        <div className="text-4xl font-bold text-slate-900 mb-1 flex items-baseline justify-center sm:justify-start">
+                            <Counter end={60} suffix="+" />
+                        </div>
+                        <p className="text-sm font-medium text-slate-500">Countries</p>
+                     </div>
+                  </div>
+               </div>
+
+            </div>
+         </div>
+      </section>
+
       {/* LOGO SHOWCASE: Partners Marquee */}
-      <section className="py-20 bg-white border-y border-slate-100 overflow-hidden">
+      <section className="py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
         <div className="w-full">
           <PartnerMarquee title="Our Esteemed Partners" partners={partners} />
         </div>
       </section>
 
       {/* FESTIVALS: Colorful Cards */}
-      <section className="py-24 px-6 bg-slate-50">
+      <section className="py-24 px-6 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-4">Our Signature Festivals</h2>
@@ -140,6 +326,68 @@ const Home: React.FC = () => {
 
           </div>
         </div>
+      </section>
+
+      {/* TESTIMONIALS SECTION (Single Auto Rotate) */}
+      <section className="py-24 px-6 bg-slate-50 relative overflow-hidden">
+         {/* Background pattern */}
+         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-[0.03]"></div>
+         
+         <div className="max-w-4xl mx-auto text-center relative z-10">
+            <div className="mb-10">
+               <div className="inline-block bg-brand-purple/10 text-brand-purple p-3 rounded-full mb-6">
+                 <Quote size={32} />
+               </div>
+               <h2 className="text-4xl font-serif font-bold mb-4 text-slate-900">Community Voices</h2>
+               <p className="text-slate-500">What people are saying about our festivals</p>
+            </div>
+
+            <div className="relative min-h-[300px] flex items-center justify-center">
+               {/* Testimonial Card */}
+               <div 
+                  className={`bg-white p-10 md:p-14 rounded-[2rem] shadow-2xl transition-all duration-500 transform ${
+                     isAnimating ? 'opacity-0 translate-y-4 scale-95' : 'opacity-100 translate-y-0 scale-100'
+                  }`}
+               >
+                  <p className="text-xl md:text-2xl text-slate-700 leading-relaxed font-serif italic mb-8">
+                     "{testimonials[currentTestimonialIndex].text}"
+                  </p>
+                  
+                  <div className="flex flex-col items-center">
+                     <div className="w-12 h-1 bg-gradient-to-r from-brand-purple to-brand-red rounded-full mb-4"></div>
+                     <h4 className="font-bold text-slate-900 text-lg">{testimonials[currentTestimonialIndex].author}</h4>
+                     <p className="text-slate-500 text-sm mb-2">{testimonials[currentTestimonialIndex].role}</p>
+                     <span className={`text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider ${
+                        testimonials[currentTestimonialIndex].festival === 'ATOM' 
+                        ? 'bg-brand-teal/10 text-brand-teal' 
+                        : 'bg-brand-red/10 text-brand-red'
+                     }`}>
+                        {testimonials[currentTestimonialIndex].festival}
+                     </span>
+                  </div>
+               </div>
+            </div>
+
+            {/* Indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+               {testimonials.map((_, idx) => (
+                  <button
+                     key={idx}
+                     onClick={() => {
+                        setIsAnimating(true);
+                        setTimeout(() => {
+                           setCurrentTestimonialIndex(idx);
+                           setIsAnimating(false);
+                        }, 300);
+                     }}
+                     className={`h-2 rounded-full transition-all duration-300 ${
+                        idx === currentTestimonialIndex ? 'w-8 bg-brand-purple' : 'w-2 bg-slate-300 hover:bg-slate-400'
+                     }`}
+                     aria-label={`Go to testimonial ${idx + 1}`}
+                  />
+               ))}
+            </div>
+         </div>
       </section>
 
       {/* CTA SECTION: Vibrant Gradient */}
