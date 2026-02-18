@@ -105,7 +105,7 @@ const Home: React.FC = () => {
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
          <div className="max-w-6xl mx-auto text-center relative z-10">
-            {/* REMOVED: "Celebrating Cinema & Culture" Subtitle */}
+            {/* REMOVED SUBTITLE: Celebrating Cinema & Culture */}
             
             <h1 className="text-6xl md:text-8xl font-serif font-bold mb-8 leading-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               Where <span className="text-gradient">Stories</span> Come<br/>To Life.
@@ -130,7 +130,7 @@ const Home: React.FC = () => {
       <section className="py-20 px-6 bg-white border-y border-slate-100">
          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-16">
-               {/* REMOVED: "Our Reach" Subtitle */}
+               {/* REMOVED SUBTITLE: Our Reach */}
                <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Impact & Legacy</h2>
             </div>
             

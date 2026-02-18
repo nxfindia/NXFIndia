@@ -1,24 +1,24 @@
-import { GoogleGenAI, Chat } from "@google/genai";
+import { GoogleGenerativeAI, ChatSession } from "@google/generative-ai";
 import { KNOWLEDGE_BASE } from "./knowledgeBase";
 
 // Declare process for TypeScript since we are not using @types/node
 declare var process: any;
 
-let ai: GoogleGenAI | null = null;
-let chatSession: Chat | null = null;
+let genAI: GoogleGenerativeAI | null = null;
+let chatSession: ChatSession | null = null;
 
 const initializeAI = () => {
   if (!process.env.API_KEY) {
     console.warn("API Key is missing. AI features will not work.");
     return null;
   }
-  if (!ai) {
-    ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+  if (!genAI) {
+    genAI = new GoogleGenerativeAI(process.env.API_KEY);
   }
-  return ai;
+  return genAI;
 };
 
-export const getChatSession = (): Chat => {
+export const getChatSession = (): ChatSession => {
   const client = initializeAI();
   if (!client) {
     throw new Error("AI Client not initialized");
@@ -38,11 +38,14 @@ export const getChatSession = (): Chat => {
     *** KNOWLEDGE BASE ***
     ${KNOWLEDGE_BASE}`;
 
-    chatSession = client.chats.create({ 
-      model: "gemini-3-flash-preview",
-      config: {
-        systemInstruction: systemPrompt,
-      }
+    // Using gemini-1.5-flash as the stable model for this SDK
+    const model = client.getGenerativeModel({ 
+      model: "gemini-1.5-flash",
+      systemInstruction: systemPrompt
+    });
+
+    chatSession = model.startChat({ 
+      history: [],
     });
   }
   return chatSession;
@@ -51,8 +54,8 @@ export const getChatSession = (): Chat => {
 export const sendMessageToGemini = async (message: string): Promise<string> => {
   try {
     const chat = getChatSession();
-    const result = await chat.sendMessage({ message: message });
-    return result.text || "";
+    const result = await chat.sendMessage(message);
+    return result.response.text();
   } catch (error) {
     console.error("Gemini API Error:", error);
     // Reset session on error to clear potentially stuck state
