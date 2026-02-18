@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Trophy, ChevronLeft, ChevronRight, Play, X } from 'lucide-react';
+import { MapPin, Trophy, ChevronLeft, ChevronRight, Play, X, Image as ImageIcon } from 'lucide-react';
 
 const Osff: React.FC = () => {
   // --- Data ---
@@ -126,26 +126,24 @@ const Osff: React.FC = () => {
     }
   ];
 
-  const galleryImages = [
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5359-scaled.jpg", caption: "The Screening Hall" },
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5385-scaled.jpg", caption: "Festival Highlights" },
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5364-scaled.jpg", caption: "Audience Engagement" },
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5352-scaled.jpg", caption: "Cinematic Moments" },
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5322-scaled.jpg", caption: "Cultural Exchange" },
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5230-scaled.jpg", caption: "Short Film Celebration" },
-    { src: "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5228-scaled.jpg", caption: "In the Blue Mountains" }
+  const osffGalleryImages = [
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6447-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6449-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6522-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6681-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6721-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6761-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6799-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_6880-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/DSP_7139-scaled.jpg"
   ];
 
-  const [currentGalleryIndex, setCurrentGalleryIndex] = useState(0);
   const [selectedMember, setSelectedMember] = useState<typeof juryMembers[0] | null>(null);
-
-  const nextImage = () => setCurrentGalleryIndex((prev) => (prev + 1) % galleryImages.length);
-  const prevImage = () => setCurrentGalleryIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
 
   return (
     <div className="bg-paper min-h-screen pt-28">
       
-      {/* HERO: Cinematic Title - Matched to FilmFestivals Header */}
+      {/* HERO: Cinematic Title */}
       <section className="relative bg-brand-dark text-white py-24 px-6 lg:px-12 overflow-hidden">
         {/* Abstract light effects */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-purple/30 rounded-full blur-[100px] animate-pulse"></div>
@@ -288,25 +286,31 @@ const Osff: React.FC = () => {
          </div>
       </section>
 
-      {/* GALLERY: Full Width with Overlay */}
-      <section className="relative h-[70vh] group overflow-hidden">
-         <img 
-            src={galleryImages[currentGalleryIndex].src} 
-            className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-            alt="Gallery"
-         />
-         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
-         
-         <div className="absolute bottom-0 left-0 w-full p-12 flex flex-col md:flex-row justify-between items-end text-white">
-             <div className="mb-6 md:mb-0">
-                <p className="text-brand-gold font-bold uppercase tracking-widest text-sm mb-2">Festival Moments</p>
-                <h2 className="text-4xl md:text-5xl font-serif font-bold">{galleryImages[currentGalleryIndex].caption}</h2>
-             </div>
-             
-             <div className="flex gap-4">
-                <button onClick={prevImage} className="bg-white/20 hover:bg-white text-white hover:text-black p-4 rounded-full backdrop-blur-md transition-all"><ChevronLeft/></button>
-                <button onClick={nextImage} className="bg-white/20 hover:bg-white text-white hover:text-black p-4 rounded-full backdrop-blur-md transition-all"><ChevronRight/></button>
-             </div>
+      {/* FESTIVAL MOMENTS GALLERY (New Grid Layout) */}
+      <section className="py-24 px-6 bg-slate-50 border-t border-slate-200">
+         <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-12">
+               <div className="inline-flex items-center justify-center p-3 bg-brand-red/10 text-brand-red rounded-full mb-4">
+                  <ImageIcon size={24} />
+               </div>
+               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900 mb-4">Festival Moments</h2>
+               <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+                 Capturing the spirit of cinema in the hills.
+               </p>
+            </div>
+
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+               {osffGalleryImages.map((src, i) => (
+                  <div key={i} className="break-inside-avoid rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow group relative">
+                     <img 
+                       src={src} 
+                       alt={`OSFF Gallery ${i+1}`} 
+                       className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700" 
+                     />
+                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  </div>
+               ))}
+            </div>
          </div>
       </section>
 

@@ -54,10 +54,13 @@ const AtomFestival: React.FC = () => {
   ];
 
   const galleryImages = [
-    "https://arknetimages.com/wp-content/uploads/2026/02/01.jpg",
-    "https://arknetimages.com/wp-content/uploads/2026/02/02-scaled.jpg",
-    "https://arknetimages.com/wp-content/uploads/2026/02/03jpg.jpg",
-    "https://arknetimages.com/wp-content/uploads/2026/02/04-scaled.jpg"
+    "https://arknetimages.com/wp-content/uploads/2026/02/274A4704-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/ATOM-Rathinam-3-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/ATOM-Rathinam-5-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/ATOM-Rathinam-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/IMG_9157.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5380-scaled.jpg",
+    "https://arknetimages.com/wp-content/uploads/2026/02/IMG_5408-scaled.jpg"
   ];
 
   return (
@@ -109,7 +112,7 @@ const AtomFestival: React.FC = () => {
          </div>
       </section>
 
-      {/* INTRODUCTION / VISION (Keeping the cards for visual structure, but detailed text is in modal) */}
+      {/* INTRODUCTION / VISION */}
       <section id="vision" className="py-24 px-6 bg-white scroll-mt-20">
         <div className="max-w-4xl mx-auto text-center">
            <span className="text-brand-purple font-bold uppercase tracking-widest text-sm mb-4 block">An NXF Initiative</span>
@@ -192,7 +195,7 @@ const AtomFestival: React.FC = () => {
          </div>
       </section>
 
-      {/* GALLERY SECTION (NEW) */}
+      {/* GALLERY SECTION */}
       <section className="py-24 px-6 bg-slate-50">
          <div className="max-w-7xl mx-auto">
             <div className="text-center mb-12">

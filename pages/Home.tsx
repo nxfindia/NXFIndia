@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, Star, Heart, X, Film, Quote } from 'lucide-react';
+import { ArrowRight, Star, Heart, X, Film, Quote, Globe, Play } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import PartnerMarquee from '../components/PartnerMarquee';
 
@@ -105,8 +105,6 @@ const Home: React.FC = () => {
          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
 
          <div className="max-w-6xl mx-auto text-center relative z-10">
-            {/* REMOVED SUBTITLE: Celebrating Cinema & Culture */}
-            
             <h1 className="text-6xl md:text-8xl font-serif font-bold mb-8 leading-tight animate-fade-in-up" style={{animationDelay: '0.1s'}}>
               Where <span className="text-gradient">Stories</span> Come<br/>To Life.
             </h1>
@@ -126,87 +124,75 @@ const Home: React.FC = () => {
          </div>
       </section>
 
-      {/* IMPACT METRICS SECTION (Clean & Static) */}
-      <section className="py-20 px-6 bg-white border-y border-slate-100">
-         <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-               {/* REMOVED SUBTITLE: Our Reach */}
-               <h2 className="text-3xl md:text-4xl font-serif font-bold text-slate-900">Impact & Legacy</h2>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-               
-               {/* ATOM Block */}
-               <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col h-full relative overflow-hidden group hover:shadow-md transition-all">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
-                      <div className="p-3 bg-brand-teal/10 rounded-2xl">
-                         <img src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" alt="ATOM" className="h-12 w-auto mix-blend-multiply" />
+      {/* IMPACT & LEGACY SECTION: Editorial Split Layout */}
+      <section className="w-full border-y border-slate-200 bg-white">
+          <div className="grid grid-cols-1 lg:grid-cols-2">
+
+              {/* ATOM Side - White Background */}
+              <div className="bg-white p-12 lg:p-24 flex flex-col justify-center border-b lg:border-b-0 lg:border-r border-slate-100 group">
+                  <div className="mb-16">
+                      <div className="h-12 w-auto mb-8 flex items-center">
+                         <img src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" alt="ATOM" className="h-full w-auto object-contain mix-blend-multiply opacity-80" />
                       </div>
-                      <h3 className="text-2xl font-serif font-bold text-slate-900">Atom Film Festival</h3>
+                      <h3 className="text-3xl font-serif font-bold text-slate-900 mb-2">ATOM Film Festival</h3>
+                      <p className="text-slate-500 font-medium max-w-md">The traveling documentary cinema fostering ecological dialogue.</p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                     <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1">
-                            5
-                        </div>
-                        <p className="text-sm font-medium text-slate-500">Colleges Hosted</p>
-                     </div>
-                     <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1">
-                            400+
-                        </div>
-                        <p className="text-sm font-medium text-slate-500">Documentaries</p>
-                     </div>
-                     <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1">
-                            10,000+
-                        </div>
-                        <p className="text-sm font-medium text-slate-500">Students Impacted</p>
-                     </div>
-                  </div>
-               </div>
-
-               {/* OSFF Block */}
-               <div className="bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col h-full relative overflow-hidden group hover:shadow-md transition-all">
-                  <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 mb-8">
-                      <div className="p-3 bg-brand-red/10 rounded-2xl">
-                         <img src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" alt="OSFF" className="h-12 w-auto object-contain" />
+                  <div className="space-y-10">
+                      <div>
+                          <div className="flex items-start">
+                              <span className="text-7xl lg:text-8xl font-serif font-bold text-slate-900 leading-none tracking-tight">10k</span>
+                              <span className="text-4xl lg:text-5xl font-serif text-brand-teal mt-2">+</span>
+                          </div>
+                          <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mt-4 border-t border-slate-100 pt-4 inline-block pr-12">Students Impacted</div>
                       </div>
-                      <h3 className="text-2xl font-serif font-bold text-slate-900">Ooty Short Film Festival</h3>
+
+                      <div className="grid grid-cols-2 gap-8 lg:gap-12">
+                          <div>
+                              <div className="text-4xl lg:text-5xl font-serif font-bold text-slate-900">400+</div>
+                              <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2">Documentaries</div>
+                          </div>
+                          <div>
+                              <div className="text-4xl lg:text-5xl font-serif font-bold text-slate-900">5</div>
+                              <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2">Campus Editions</div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              {/* OSFF Side - Soft Gray Background */}
+              <div className="bg-slate-50 p-12 lg:p-24 flex flex-col justify-center group">
+                  <div className="mb-16">
+                      <div className="h-12 w-auto mb-8 flex items-center">
+                         <img src="https://arknetimages.com/wp-content/uploads/2026/02/OSFF-Logo-scaled.jpg" alt="OSFF" className="h-full w-auto object-contain mix-blend-multiply opacity-80" />
+                      </div>
+                      <h3 className="text-3xl font-serif font-bold text-slate-900 mb-2">Ooty Short Film Festival</h3>
+                      <p className="text-slate-500 font-medium max-w-md">Celebrating the art of brevity in the Blue Mountains.</p>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-                     <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1">
-                            10
-                        </div>
-                        <p className="text-sm font-medium text-slate-500">Years Running</p>
-                     </div>
-                     <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1">
-                            1,300+
-                        </div>
-                        <p className="text-sm font-medium text-slate-500">Short Films</p>
-                     </div>
-                     <div className="text-center sm:text-left">
-                        <div className="text-4xl font-bold text-slate-900 mb-1">
-                            60+
-                        </div>
-                        <p className="text-sm font-medium text-slate-500">Countries</p>
-                     </div>
+                  <div className="space-y-10">
+                      <div>
+                          <div className="flex items-start">
+                              <span className="text-7xl lg:text-8xl font-serif font-bold text-slate-900 leading-none tracking-tight">10</span>
+                              <span className="text-4xl lg:text-5xl font-serif text-brand-red mt-2">th</span>
+                          </div>
+                          <div className="text-xs font-bold uppercase tracking-[0.2em] text-slate-400 mt-4 border-t border-slate-200 pt-4 inline-block pr-12">Festival Edition</div>
+                      </div>
+
+                      <div className="grid grid-cols-2 gap-8 lg:gap-12">
+                          <div>
+                              <div className="text-4xl lg:text-5xl font-serif font-bold text-slate-900">1.3k+</div>
+                              <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2">Films Screened</div>
+                          </div>
+                          <div>
+                              <div className="text-4xl lg:text-5xl font-serif font-bold text-slate-900">60+</div>
+                              <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400 mt-2">Countries</div>
+                          </div>
+                      </div>
                   </div>
-               </div>
+              </div>
 
-            </div>
-         </div>
-      </section>
-
-      {/* LOGO SHOWCASE: Partners Marquee */}
-      <section className="py-20 bg-slate-50 border-b border-slate-100 overflow-hidden">
-        <div className="w-full">
-          <PartnerMarquee title="Our Esteemed Partners" partners={partners} />
-        </div>
+          </div>
       </section>
 
       {/* FESTIVALS: Colorful Cards */}
@@ -274,6 +260,13 @@ const Home: React.FC = () => {
             </div>
 
           </div>
+        </div>
+      </section>
+
+      {/* LOGO SHOWCASE: Partners Marquee */}
+      <section className="py-20 bg-white border-y border-slate-100 overflow-hidden">
+        <div className="w-full">
+          <PartnerMarquee title="Our Esteemed Partners" partners={partners} />
         </div>
       </section>
 
@@ -356,64 +349,53 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* SUBMISSION POPUP - REDESIGNED */}
+      {/* SUBMISSION POPUP */}
       {showSubmissionModal && (
-        <div className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-50 max-w-xs md:max-w-sm w-full animate-in slide-in-from-bottom-10 fade-in duration-700">
-           <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden relative font-sans">
+        <div className="fixed bottom-6 right-6 z-50 animate-in slide-in-from-bottom-10 fade-in duration-700">
+           <div className="bg-white rounded-2xl shadow-2xl border border-slate-200 overflow-hidden w-80 relative font-sans">
               
               {/* Close Button */}
               <button 
                 onClick={() => setShowSubmissionModal(false)}
-                className="absolute top-3 right-3 p-2 bg-black/10 hover:bg-black/20 text-white rounded-full transition-colors z-20 backdrop-blur-md"
+                className="absolute top-2 right-2 p-1.5 bg-black/10 hover:bg-black/20 text-white rounded-full transition-colors z-20 backdrop-blur-sm"
               >
-                <X size={16} />
+                <X size={14} />
               </button>
 
-              {/* Header Image - Red Gradient */}
-              <div className="h-28 bg-gradient-to-br from-brand-red to-rose-700 relative">
+              {/* Header Image */}
+              <div className="h-24 bg-gradient-to-br from-brand-red to-rose-900 relative">
                  <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30"></div>
-                 <Film className="text-white/10 w-32 h-32 absolute -bottom-8 -right-8 transform -rotate-12" />
               </div>
 
               {/* Body Content */}
-              <div className="px-6 pb-6 pt-3 relative bg-white">
+              <div className="px-6 pb-6 pt-0 relative bg-white">
                  
-                 {/* Floating Logo - No Frame/Box */}
-                 <div className="absolute -top-14 left-6 w-28 h-28 z-10 transform hover:scale-105 transition-transform">
+                 {/* Floating Logo */}
+                 <div className="-mt-10 mb-4 inline-block bg-white p-2 rounded-xl shadow-lg border border-slate-100">
                     <img 
                        src="https://arknetimages.com/wp-content/uploads/2026/02/Atom-Logo-Final.jpg" 
                        alt="ATOM Logo" 
-                       className="w-full h-full object-contain"
+                       className="w-16 h-16 object-contain"
                     />
                  </div>
 
-                 {/* Title Section (Aligned left next to logo space) */}
-                 <div className="flex items-end mb-4 pt-1">
-                     {/* Spacer for Logo */}
-                     <div className="w-28 flex-shrink-0"></div> 
-                     
-                     <div className="pl-3 text-left">
-                        <h3 className="font-serif font-bold text-slate-900 text-xl leading-none mb-1">Filmmakers!</h3>
-                        <p className="text-[10px] font-bold uppercase tracking-wider text-brand-red">Global Call for Entries</p>
-                     </div>
-                 </div>
-                 
-                 <p className="text-slate-600 text-sm leading-relaxed mb-6 text-left">
-                   ATOM Film Festival is now open. Submit your documentary and share your story with the world.
+                 <h3 className="font-bold text-slate-900 text-lg leading-tight mb-2">Global Call for Entries</h3>
+                 <p className="text-xs text-slate-500 mb-5 leading-relaxed">
+                   ATOM Film Festival is accepting documentary submissions worldwide.
                  </p>
 
-                 <div className="flex gap-3">
+                 <div className="flex gap-2">
                    <a 
                      href="https://filmmakers.festhome.com/f/9456" 
                      target="_blank"
                      rel="noreferrer"
-                     className="flex-1 bg-brand-dark text-white py-3 rounded-xl font-bold text-sm hover:bg-brand-purple transition-all shadow-lg shadow-brand-dark/20 flex items-center justify-center gap-2 group"
+                     className="flex-1 bg-brand-dark text-white py-2.5 rounded-lg font-bold text-xs hover:bg-brand-purple transition-all text-center shadow-lg shadow-brand-dark/20"
                    >
-                     Submit Now <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                     Submit Now
                    </a>
                    <button 
                      onClick={() => setShowSubmissionModal(false)}
-                     className="px-4 py-3 text-slate-400 font-bold text-sm hover:bg-slate-50 hover:text-slate-600 rounded-xl transition-colors"
+                     className="px-4 py-2.5 bg-slate-100 text-slate-500 font-bold text-xs hover:bg-slate-200 hover:text-slate-700 rounded-lg transition-colors"
                    >
                      Later
                    </button>
