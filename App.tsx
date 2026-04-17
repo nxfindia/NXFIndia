@@ -9,6 +9,8 @@ import Contact from './pages/Contact';
 import FilmFestivals from './pages/FilmFestivals';
 import Osff from './pages/Osff';
 import AtomFestival from './pages/AtomFestival';
+import Banyan from './pages/Banyan';
+import OotyGrant from './pages/OotyGrant';
 
 const App: React.FC = () => {
   return (
@@ -24,6 +26,11 @@ const App: React.FC = () => {
             <Route path="/film-festivals" element={<FilmFestivals />} />
             <Route path="/osff" element={<Osff />} />
             <Route path="/atom" element={<AtomFestival />} />
+            <Route path="/banyan" element={<Banyan />} />
+            
+            {/* Dormant / Hidden Routes */}
+            <Route path="/grant" element={<OotyGrant />} />
+            <Route path="/jiyo" element={<Navigate to="/banyan" replace />} />
             
             {/* Redirects/Placeholders for backward compatibility or direct access */}
             <Route path="/donate" element={<Navigate to="/contact" replace />} />

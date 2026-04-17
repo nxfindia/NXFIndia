@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
       { label: 'Ooty Short Film Festival', path: '/osff' }
     ]
   },
+  { label: 'Banyan', path: '/banyan' },
   { label: 'Contact', path: '/contact' },
 ];
 
