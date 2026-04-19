@@ -112,7 +112,7 @@ const Banyan: React.FC = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto mb-24">
           <div className={`bg-slate-50 p-10 rounded-2xl border border-slate-100 hover:shadow-lg transition-all group ${revealClass}`} style={{ transitionDelay: '300ms' }}>
             <h3 className="font-serif font-bold text-2xl mb-4 text-slate-900 group-hover:text-brand-purple transition-colors">What to submit</h3>
             <p className="text-lg text-slate-600">3 to 5 photographs.<br/>That is all.</p>
@@ -126,8 +126,54 @@ const Banyan: React.FC = () => {
             <p className="text-lg text-slate-600">Entry is completely free.</p>
           </div>
         </div>
+
+        {/* Timeline Section */}
+        <div className={`max-w-4xl mx-auto mb-20 ${revealClass}`} style={{ transitionDelay: '600ms' }}>
+          <div className="text-center mb-16">
+            <span className="text-brand-purple font-bold tracking-widest uppercase text-sm mb-3 block">The Journey</span>
+            <h3 className="font-serif font-bold text-4xl text-slate-900">Timeline</h3>
+          </div>
+          
+          <div className="relative border-l-2 border-brand-gold/30 ml-4 md:ml-12 space-y-12 pb-4">
+            <div className={`relative pl-8 md:pl-12 ${revealClass}`} style={{ transitionDelay: '100ms' }}>
+              <div className="absolute w-5 h-5 bg-brand-purple rounded-full -left-[11px] top-1.5 shadow-[0_0_0_6px_white]"></div>
+              <h4 className="font-serif font-bold text-2xl md:text-3xl text-slate-900 mb-3">1 May 2025 — Launch Day</h4>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">Competition opens on World Labour Day. A day that honours a life of work — the perfect moment to say: now it is your time.</p>
+            </div>
+            
+            <div className={`relative pl-8 md:pl-12 ${revealClass}`} style={{ transitionDelay: '200ms' }}>
+              <div className="absolute w-5 h-5 bg-brand-gold rounded-full -left-[11px] top-1.5 shadow-[0_0_0_6px_white]"></div>
+              <h4 className="font-serif font-bold text-2xl md:text-3xl text-slate-900 mb-3">1 May to 31 July 2025 — Open for Submissions</h4>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">Three months for participants across India to photograph, reflect, and submit their work.</p>
+            </div>
+
+            <div className={`relative pl-8 md:pl-12 ${revealClass}`} style={{ transitionDelay: '300ms' }}>
+              <div className="absolute w-5 h-5 bg-brand-teal rounded-full -left-[11px] top-1.5 shadow-[0_0_0_6px_white]"></div>
+              <h4 className="font-serif font-bold text-2xl md:text-3xl text-slate-900 mb-3">August 2025 — Curation</h4>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">Our jury reviews every submission. Selected works are notified personally.</p>
+            </div>
+
+            <div className={`relative pl-8 md:pl-12 ${revealClass}`} style={{ transitionDelay: '400ms' }}>
+              <div className="absolute w-5 h-5 bg-brand-purple rounded-full -left-[11px] top-1.5 shadow-[0_0_0_6px_white]"></div>
+              <h4 className="font-serif font-bold text-2xl md:text-3xl text-slate-900 mb-3">September 2025 — Production</h4>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">Selected photographs are professionally printed and framed. Exhibition design and travel logistics confirmed.</p>
+            </div>
+
+            <div className={`relative pl-8 md:pl-12 ${revealClass}`} style={{ transitionDelay: '500ms' }}>
+              <div className="absolute w-5 h-5 bg-brand-gold rounded-full -left-[11px] top-1.5 shadow-[0_0_0_6px_white]"></div>
+              <h4 className="font-serif font-bold text-2xl md:text-3xl text-slate-900 mb-3">1 October 2025 — Opening Night, Coimbatore</h4>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">The exhibition opens on World Senior Citizens Day. An evening to remember — for the artists, their families, and the city.</p>
+            </div>
+
+            <div className={`relative pl-8 md:pl-12 ${revealClass}`} style={{ transitionDelay: '600ms' }}>
+              <div className="absolute w-5 h-5 bg-brand-teal rounded-full -left-[11px] top-1.5 shadow-[0_0_0_6px_white]"></div>
+              <h4 className="font-serif font-bold text-2xl md:text-3xl text-slate-900 mb-3">October onwards — The Exhibition Travels</h4>
+              <p className="text-lg md:text-xl text-slate-600 leading-relaxed">From Coimbatore, BANYAN moves city to city — going where our participants are, on personal invitation.</p>
+            </div>
+          </div>
+        </div>
         
-        <div className={`mt-16 text-center ${revealClass}`} style={{ transitionDelay: '600ms' }}>
+        <div className={`mt-16 text-center ${revealClass}`} style={{ transitionDelay: '800ms' }}>
           <a 
             href="https://forms.gle/58sBUFWCJEQkd1Sw9"
             target="_blank"
